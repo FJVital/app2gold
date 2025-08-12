@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN for a clean, modern framework -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for the rocket icon -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Smooth scrolling */
@@ -21,40 +21,40 @@
         /* Page load animation */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F7F7F7; /* Your background color */
+            background-color: #F7F7F7;
             animation: fadeInUp 0.8s ease-out;
         }
         h1, h2, h3, .text-bold {
-            font-weight: 700; /* Bold */
+            font-weight: 700;
         }
         h4 {
-            font-weight: 500; /* Medium */
+            font-weight: 500;
         }
         p, li, .text-light {
-            font-weight: 300; /* Light */
+            font-weight: 300;
         }
         .container {
-            border: 1px solid #DBDAD7; /* Main container border */
+            border: 1px solid #DBDAD7;
         }
         .text-header-dark {
-            color: #5E5A49; /* Your header text color */
+            color: #5E5A49;
         }
         .text-body-dark {
-            color: #000000; /* Your body text color */
+            color: #000000;
         }
         .bg-custom-gray {
-            background-color: #EDEAEA; /* Your light gray background */
+            background-color: #EDEAEA;
         }
         .btn-primary {
-            background-color: #5E5A49; /* Your primary button color */
-            color: #FFFFFF; /* Your white text color */
+            background-color: #5E5A49;
+            color: #FFFFFF;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             transform: translateY(0);
         }
         .btn-primary:hover {
-            background-color: #888578; /* Hover state color */
+            background-color: #888578;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(94, 90, 73, 0.3);
         }
@@ -62,11 +62,9 @@
             transform: translateY(0);
             box-shadow: 0 2px 6px rgba(94, 90, 73, 0.2);
         }
-        /* No rounded corners, as requested */
         .rounded-none {
             border-radius: 0;
         }
-        /* Outline only for input boxes */
         input, textarea {
             border: 1px solid #000000;
             outline: none;
@@ -81,70 +79,15 @@
             border-color: #5E5A49;
             box-shadow: 0 2px 8px rgba(94, 90, 73, 0.1);
         }
-        
-        /* Remove all borders from buttons and links */
         button, a {
             border: none;
             background: none;
         }
-        /* Adjusted hr for a thicker look */
         hr {
             border: none;
             height: 2px;
             background-color: #DBDAD7;
         }
-        /* Chat agent styles */
-        .chat-message {
-            max-width: 95%;
-            padding: 8px 12px;
-            border-radius: 0;
-            word-wrap: break-word;
-            font-size: 0.875rem;
-        }
-        
-        @media (min-width: 640px) {
-            .chat-message {
-                max-width: 90%;
-                padding: 12px 16px;
-                font-size: 1rem;
-            }
-        }
-        .agent-message {
-            background-color: #EDEAEA;
-            color: #000000;
-        }
-        .user-message {
-            background-color: #5E5A49;
-            color: white;
-            align-self: flex-end;
-        }
-        /* Fix for the main heading to be one line on desktop */
-        .headline {
-            white-space: normal;
-        }
-        /* Style for the grey header sections */
-        .header-section {
-            background-color: #EDEAEA;
-            color: #5E5A49;
-            padding: 1rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .header-section:hover {
-            background-color: #E8E5E5;
-        }
-        .header-section h2 {
-            margin: 0;
-            color: #5E5A49;
-            font-size: 1.5rem;
-        }
-        .header-section p, .header-section li {
-            text-align: left;
-        }
-        .ml-6 {
-          margin-left: 1.5rem;
-        }
-        /* Ensure agent flow is hidden initially */
         .hidden {
             display: none !important;
         }
@@ -197,6 +140,15 @@
             }
         }
         
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
         .fade-in {
             animation: fadeInUp 0.6s ease-out;
         }
@@ -209,81 +161,37 @@
             animation: pulse 1.5s ease-in-out infinite;
         }
         
-        /* Smooth transitions for sections */
-        section {
+        .rotating-star {
+            animation: rotate 2s linear infinite;
+        }
+        
+        /* Header sections */
+        .header-section {
+            background-color: #EDEAEA;
+            color: #5E5A49;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .header-section:hover {
+            background-color: #E8E5E5;
+        }
+        .header-section h2 {
+            margin: 0;
+            color: #5E5A49;
+            font-size: 1.5rem;
+        }
+        .header-section p, .header-section li {
+            text-align: left;
+        }
+        
+        /* Robot image styling */
+        .robot-image {
             transition: all 0.3s ease;
         }
         
-        /* Hover effects for testimonials */
-        .testimonial-card {
-            transition: all 0.2s ease;
-            cursor: default;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateX(8px);
-            background-color: rgba(237, 234, 234, 0.3);
-            padding-left: 1.5rem;
-        }
-        
-        /* Custom gold button styling */
-        .gold-button {
-            transition: all 0.3s ease;
-            filter: brightness(1);
-        }
-        
-        .gold-button:hover {
-            filter: brightness(1.1) drop-shadow(0 8px 16px rgba(255, 215, 0, 0.3));
-            transform: translateY(-2px);
-        }
-        
-        .gold-button:active {
-            transform: translateY(0);
-            filter: brightness(0.95);
-        }
-        
-        /* Logo hover effect */
-        .logo-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .logo-hover:hover {
+        .robot-image:hover {
             transform: scale(1.05);
-        }
-        
-        /* Responsive fixes */
-        @media (max-width: 640px) {
-            .testimonial-card:hover {
-                transform: translateX(4px);
-                padding-left: 1rem;
-            }
-            
-            .header-section {
-                padding: 0.75rem;
-            }
-            
-            .header-section h2 {
-                font-size: 1.125rem;
-            }
-        }
-        
-        /* Ensure proper spacing on very small screens */
-        @media (max-width: 384px) {
-            .px-4 {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-        }
-        
-        /* Robot character styling */
-        .robot-character {
-            filter: sepia(1) hue-rotate(38deg) saturate(4) brightness(1.2);
-            transition: all 0.3s ease;
-        }
-        
-        .robot-character:hover {
-            transform: scale(1.05);
-            filter: sepia(1) hue-rotate(38deg) saturate(5) brightness(1.4);
         }
         
         /* Multi-page agent flow styling */
@@ -309,6 +217,84 @@
         .bg-red-500:hover {
             background-color: #dc2626;
         }
+        
+        /* Logo hover effect */
+        .logo-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .logo-hover:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Progress styling */
+        .progress-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-check {
+            color: #28a745;
+            margin-right: 0.5rem;
+        }
+        
+        .progress-number {
+            color: #5E5A49;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            transition: all 0.2s ease;
+            cursor: default;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateX(8px);
+            background-color: rgba(237, 234, 234, 0.3);
+            padding-left: 1.5rem;
+        }
+        
+        /* Gold button styling */
+        .gold-button {
+            transition: all 0.3s ease;
+            filter: brightness(1);
+        }
+        
+        .gold-button:hover {
+            filter: brightness(1.1) drop-shadow(0 8px 16px rgba(255, 215, 0, 0.3));
+            transform: translateY(-2px);
+        }
+        
+        .gold-button:active {
+            transform: translateY(0);
+            filter: brightness(0.95);
+        }
+        
+        /* Responsive fixes */
+        @media (max-width: 640px) {
+            .testimonial-card:hover {
+                transform: translateX(4px);
+                padding-left: 1rem;
+            }
+            
+            .header-section {
+                padding: 0.75rem;
+            }
+            
+            .header-section h2 {
+                font-size: 1.125rem;
+            }
+        }
+        
+        @media (max-width: 384px) {
+            .px-4 {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-[#F7F7F7] flex items-center justify-center p-4">
@@ -326,15 +312,12 @@
         <!-- Header Section -->
         <header class="text-center space-y-3 md:space-y-4">
             <div class="flex justify-center items-center">
-                <!-- Logo for GitHub Pages hosting -->
-                <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-20 sm:h-24 md:h-28 lg:h-32 w-auto logo-hover">
+                <!-- Logo - 30% size -->
+                <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
             </div>
             <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-header-dark headline leading-tight px-2">
                 Your App. Your Success.
             </h1>
-            <p class="text-sm sm:text-base md:text-medium text-body-dark max-w-2xl mx-auto font-light px-4">
-                You have a brilliant idea for an app—but you're not a developer, and hiring an agency costs thousands. That shouldn't stop you. Whether you already have a concept or just deep expertise in your field, <span class="font-bold">app2gold</span> helps you turn your knowledge into a product that can be monetized, shared, and scaled.
-            </p>
             <hr class="border-[#DBDAD7]">
         </header>
 
@@ -500,10 +483,10 @@
         <section id="agent-flow-section" class="space-y-4 md:space-y-6 hidden">
             
             <!-- Page 2: Welcome & User Info Collection -->
-            <div id="agent-page-2" class="text-center space-y-6">
+            <div id="agent-page-2" class="text-center space-y-6 agent-page">
                 <!-- Golden Robot Character -->
                 <div class="flex justify-center items-center mb-6">
-                    <div class="text-8xl robot-character">🤖</div>
+                    <img src="./images/Robot 1.png" alt="Golden Robot" class="h-48 sm:h-56 md:h-64 w-auto robot-image">
                 </div>
                 
                 <div class="space-y-4">
@@ -512,13 +495,11 @@
                     </h2>
                     <p class="text-sm sm:text-base text-body-dark font-light max-w-2xl mx-auto px-4">
                         Thanks for your purchase! No coding, no developers can you and your AI agent turning your product idea into a powerful, step-by-step business guide that gets your app ready to launch.
-                        <br><br>
-                        <span class="font-medium text-header-dark">⚠️ Important: This is your one-time consultation session.</span>
                     </p>
                 </div>
                 
-                <!-- User Info Form -->
-                <div class="bg-custom-gray p-6 space-y-4 max-w-md mx-auto">
+                <!-- User Info Form - White background -->
+                <div class="bg-white p-6 space-y-4 max-w-md mx-auto border border-gray-300">
                     <h3 class="text-lg font-bold text-header-dark text-left">Tell me about you</h3>
                     
                     <div class="space-y-4">
@@ -537,15 +518,29 @@
                         </button>
                     </div>
                 </div>
+                
+                <!-- Warning with Yellow Triangle -->
+                <div class="flex items-center justify-center space-x-2 max-w-md mx-auto">
+                    <img src="./images/yellow_triangle.png" alt="Warning" class="h-5 w-5">
+                    <span class="text-sm font-medium text-header-dark">Important: This is your one-time consultation session.</span>
+                </div>
             </div>
 
             <!-- Page 3: Main Idea Input -->
-            <div id="agent-page-3" class="hidden">
+            <div id="agent-page-3" class="hidden agent-page">
+                <!-- Logo - Same size as page 1 (30%) -->
+                <div class="flex justify-center items-center mb-4">
+                    <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
+                </div>
+                <p class="text-center text-sm font-light text-header-dark mb-6">Your App. Your Success.</p>
+                
                 <div class="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-8">
                     <!-- Main Content -->
                     <div class="flex-1 space-y-4">
-                        <p class="text-sm sm:text-base text-body-dark font-light leading-relaxed">
-                            Let's get started! Tell me about a product idea you're passionate about or a field you know well—this will be the foundation of our work. The more you share, the stronger and more focused we can make your app. No need for a formal write-up—just drop your thoughts and experiences in any order, and I'll turn them into a clear, compelling description. Take your time—we'll work at your pace. I'm here 24/7 to help. When is ready, click on button bellow.
+                        <h2 class="text-xl sm:text-2xl font-bold text-body-dark mb-4">Thank You for Choosing Me as Your Guide</h2>
+                        
+                        <p class="text-sm sm:text-base text-body-dark font-light leading-relaxed mb-6">
+                            Let's begin this exciting journey together. I'm thrilled you've decided to take the first step toward bringing your idea to life—an idea you believe in, one that has the potential to become a true success. Congratulations on your decision to start, and good luck. Let's build something extraordinary.
                         </p>
                         
                         <div class="border-2 border-black p-4 bg-white min-h-[300px]">
@@ -559,22 +554,38 @@
                     
                     <!-- Robot Character -->
                     <div class="flex-shrink-0 lg:w-48">
-                        <div class="text-6xl lg:text-8xl text-center robot-character">🤖</div>
+                        <img src="./images/Robot 2.png" alt="Golden Robot" class="h-32 sm:h-40 lg:h-48 w-auto mx-auto robot-image">
                     </div>
                 </div>
             </div>
 
-            <!-- Page 4: Project Refinement -->
-            <div id="agent-page-4" class="hidden space-y-6">
+            <!-- Page 4: Project Blueprint Display & Refinement -->
+            <div id="agent-page-4" class="hidden space-y-6 agent-page">
+                <!-- Logo -->
+                <div class="flex justify-center items-center mb-4">
+                    <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
+                </div>
+                <p class="text-center text-sm font-light text-header-dark mb-6">Your App. Your Success.</p>
+                
                 <div class="space-y-4">
                     <h3 class="text-lg sm:text-xl font-bold text-header-dark">PROJECT BLUEPRINT</h3>
                     <p class="text-sm sm:text-base text-body-dark font-light">
-                        Great! Now I know everything we need based on the information you've shared so far. Here's what you told me: missing, or worth adding, let me know—you can update it anytime as we work together. Just tell me what all guide you through the process ensuring every important detail is included.
+                        Project description based on the information you've shared so far.
                     </p>
                 </div>
                 
+                <!-- Generated Project Description -->
                 <div class="border-2 border-black p-4 bg-white min-h-[200px]">
-                    <textarea id="refinement-input" class="w-full h-full min-h-[180px] border-none outline-none resize-none text-body-dark text-sm" placeholder="Add any additional details, clarifications, or changes..."></textarea>
+                    <div id="project-description" class="text-sm text-body-dark whitespace-pre-wrap"></div>
+                </div>
+                
+                <p class="text-sm text-body-dark font-light">
+                    In the camp bellow write any change that you want to the blueprint project above. Add, clarify, or delete ant idea.
+                </p>
+                
+                <!-- Refinement Input -->
+                <div class="border-2 border-black p-4 bg-white min-h-[150px]">
+                    <textarea id="refinement-input" class="w-full h-full min-h-[130px] border-none outline-none resize-none text-body-dark text-sm" placeholder="Add any changes, clarifications, or additional details..."></textarea>
                 </div>
                 
                 <p class="text-sm text-body-dark font-light text-center">
@@ -587,19 +598,18 @@
             </div>
 
             <!-- Page 5: Final Guide Delivery -->
-            <div id="agent-page-5" class="hidden space-y-6">
-                <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center">🎉 YOUR PROJECT GUIDE</h2>
+            <div id="agent-page-5" class="hidden space-y-6 agent-page">
+                <!-- Logo -->
+                <div class="flex justify-center items-center mb-4">
+                    <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
+                </div>
+                
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center">YOUR PROJECT GUIDE</h2>
                 
                 <div class="space-y-4">
                     <p class="text-sm sm:text-base text-body-dark font-light">
                         Congratulations! You're holding the key to turning your idea into a powerful, real-world app. This step-by-step guide is your blueprint — and Claude.ai is ready to help you bring your product to life. Good luck entrepreneur, you've got this. And if you're not happy with one of these choices, don't feel like an expert — if you can use a computer, you're good to go because no coding is required.
                     </p>
-                    
-                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3">
-                        <p class="text-sm font-medium text-yellow-800">
-                            ⚠️ Session Ending: Please copy your guide now! Your AI consultation session will end after you copy the guide.
-                        </p>
-                    </div>
                     
                     <div class="space-y-4">
                         <div class="relative">
@@ -609,18 +619,38 @@
                             </button>
                         </div>
                         
+                        <!-- Warning with Yellow Triangle -->
+                        <div class="flex items-start space-x-2">
+                            <img src="./images/yellow_triangle.png" alt="Warning" class="h-5 w-5 mt-1 flex-shrink-0">
+                            <div class="text-sm text-red-600 font-medium">
+                                Session Ending: Please copy your guide now! Your AI consultation session will end after you copy the guide.
+                            </div>
+                        </div>
+                        
                         <div class="text-left space-y-2 text-sm text-body-dark font-light">
                             <p class="font-medium">Ready? Here's how to start:</p>
-                            <p>1️⃣ Click the Copy button at the top-right of the guide.</p>
-                            <p>2️⃣ Paste it into Word, Notepad, or your favorite text editor.</p>
-                            <p>3️⃣ Save it in a dedicated project folder.</p>
-                            <p>4️⃣ Read it carefully, follow the steps, and watch your idea come to life with AI by your side.</p>
+                            <div class="progress-item">
+                                <span class="progress-number">1</span>
+                                <span>Click the Copy button at the top-right of the guide.</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-number">2</span>
+                                <span>Paste it into Word, Notepad, or your favorite text editor.</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-number">3</span>
+                                <span>Save it in a dedicated project folder.</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-number">4</span>
+                                <span>Read it carefully, follow the steps, and watch your idea come to life with AI by your side.</span>
+                            </div>
                         </div>
                         
                         <div id="session-complete-final" class="hidden">
                             <div class="bg-green-100 border-l-4 border-green-500 p-3">
-                                <p class="text-sm text-green-800 font-medium">
-                                    ✅ Guide copied! Your session is now complete. Keep this guide safe - you won't be able to access this agent again.
+                                <p class="text-sm text-green-800 font-bold">
+                                    Guide copied! Your session is now complete. Keep this guide safe - you won't be able to access this agent again.
                                 </p>
                             </div>
                         </div>
@@ -630,8 +660,18 @@
 
             <!-- Loading Indicator -->
             <div id="loading-indicator" class="text-center hidden">
-                <i class="fas fa-spinner fa-spin text-header-dark text-xl sm:text-2xl pulse-loading"></i>
-                <p class="mt-2 text-sm sm:text-base md:text-medium text-body-dark pulse-loading">AI Agent is working...</p>
+                <div class="flex justify-center items-center mb-4">
+                    <img src="./images/star.png" alt="Processing" class="h-12 w-12 rotating-star">
+                </div>
+                <div id="loading-progress" class="space-y-2 max-w-md mx-auto">
+                    <div id="progress-text" class="text-sm sm:text-base text-body-dark font-medium"></div>
+                    <div id="progress-steps" class="text-left text-sm text-body-dark space-y-1"></div>
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 mt-4">
+                        <p class="text-sm text-yellow-800 font-medium">
+                            Please don't close or refresh your browser. Don't turn off or refresh your computer until the job is complete.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -659,11 +699,16 @@
         const startProjectBtn = document.getElementById('start-project-btn');
         const mainIdeaInput = document.getElementById('main-idea-input');
         const generateBlueprintBtn = document.getElementById('generate-blueprint-btn');
+        const projectDescription = document.getElementById('project-description');
         const refinementInput = document.getElementById('refinement-input');
         const generateGuideBtn = document.getElementById('generate-guide-btn');
         const finalGuideDisplay = document.getElementById('final-guide-display');
         const copyFinalGuideBtn = document.getElementById('copy-final-guide');
         const sessionCompleteFinal = document.getElementById('session-complete-final');
+
+        // Progress elements
+        const progressText = document.getElementById('progress-text');
+        const progressSteps = document.getElementById('progress-steps');
 
         // Agent conversation state
         let userName = '';
@@ -724,13 +769,61 @@
             agentPage5.classList.add('fade-in');
         }
 
-        function addMessage(sender, text) {
-            // This function is no longer needed in the new design
+        function showLoading(type) {
+            hideAllPages();
+            loadingIndicator.classList.remove('hidden');
+            
+            if (type === 'blueprint') {
+                progressText.textContent = 'AI Agent is analyzing your expertise...';
+                updateProgressSteps([
+                    'Processing your unique knowledge and experience...',
+                    'Creating your personalized project blueprint...',
+                    'Almost ready... building your foundation...'
+                ], 60); // 1 minute
+            } else if (type === 'guide') {
+                progressText.textContent = 'AI Agent is crafting your comprehensive guide...';
+                updateProgressSteps([
+                    'Conducting market research analysis...',
+                    'Developing your monetization strategy...',
+                    'Creating your step-by-step roadmap...',
+                    'Finalizing your complete business blueprint...'
+                ], 300); // 5 minutes
+            }
+        }
+
+        function hideLoading() {
+            loadingIndicator.classList.add('hidden');
+        }
+
+        function updateProgressSteps(steps, totalSeconds) {
+            let currentStep = 0;
+            const stepInterval = totalSeconds / steps.length;
+            
+            function updateStep() {
+                if (currentStep < steps.length) {
+                    progressSteps.innerHTML = '';
+                    
+                    for (let i = 0; i <= currentStep; i++) {
+                        const stepDiv = document.createElement('div');
+                        stepDiv.className = 'progress-item';
+                        stepDiv.innerHTML = `
+                            <span class="progress-check">✓</span>
+                            <span>${steps[i]}</span>
+                        `;
+                        progressSteps.appendChild(stepDiv);
+                    }
+                    
+                    currentStep++;
+                    if (currentStep < steps.length) {
+                        setTimeout(updateStep, stepInterval * 1000);
+                    }
+                }
+            }
+            
+            updateStep();
         }
 
         async function callOpenAIAPI(prompt) {
-            loadingIndicator.classList.remove('hidden');
-            
             try {
                 const response = await fetch('/api/chat', {
                     method: 'POST',
@@ -748,7 +841,6 @@
                 }
                 
                 const result = await response.json();
-                loadingIndicator.classList.add('hidden');
                 
                 if (result.choices && result.choices.length > 0 && result.choices[0].message) {
                     return result.choices[0].message.content;
@@ -757,13 +849,12 @@
                 }
                 
             } catch (error) {
-                loadingIndicator.classList.add('hidden');
                 console.error("Failed to fetch from API:", error);
                 return "An error occurred while connecting to the AI. Please check your internet connection and try again.";
             }
         }
 
-        // Event handlers for the new multi-page flow
+        // Event handlers
         startProjectBtn.addEventListener('click', () => {
             const name = userNameInput.value.trim();
             const email = userEmailInput.value.trim();
@@ -782,7 +873,22 @@
             
             if (ideaText) {
                 userIdea = ideaText;
-                showPage4();
+                showLoading('blueprint');
+                
+                // Generate project description
+                const descriptionPrompt = `Based on this user expertise/idea: "${ideaText}", create a concise project description (2-3 paragraphs) that summarizes:
+                1. The core product concept
+                2. Target audience and main problem solved
+                3. Key features and value proposition
+                
+                Keep it clear and focused, around 150-200 words.`;
+
+                setTimeout(async () => {
+                    const description = await callOpenAIAPI(descriptionPrompt);
+                    projectDescription.textContent = description;
+                    hideLoading();
+                    showPage4();
+                }, 60000); // 1 minute delay
             } else {
                 alert('Please share your idea or expertise to continue.');
             }
@@ -790,58 +896,30 @@
 
         generateGuideBtn.addEventListener('click', async () => {
             refinementText = refinementInput.value.trim();
+            showLoading('guide');
             
-            // Generate the final guide
-            const fullPrompt = `Create a comprehensive business guide for this product idea:
+            // Generate the final comprehensive guide
+            const guidePrompt = `Create a comprehensive business guide using the improved template format for this project:
 
 Primary Idea: ${userIdea}
-
+Project Description: ${projectDescription.textContent}
 Additional Details: ${refinementText || 'No additional details provided'}
 
-Create a detailed business guide with the following structure:
+Generate the complete guide using the app2gold template format with all sections filled out appropriately for this specific project.`;
 
-# Your Complete Product Guide: [Product Name]
-
-## Product Overview
-[Brief summary of the product]
-
-## Market Research Analysis
-- Target market size and demographics
-- Customer pain points and motivations
-- Competitive landscape analysis
-- Market opportunities and trends
-- Pricing strategy recommendations
-
-## Implementation Roadmap
-Provide 5 clear, actionable steps for a beginner to build and launch this product:
-1. [Step 1 with specific actions]
-2. [Step 2 with specific actions]
-3. [Step 3 with specific actions]
-4. [Step 4 with specific actions]
-5. [Step 5 with specific actions]
-
-## Monetization Strategy
-- Revenue model recommendations
-- Pricing tiers and strategies
-- Sales and marketing channels
-
-## Next Steps
-- Immediate actions to take
-- Resources needed
-- Timeline expectations
-
-Make this guide comprehensive, actionable, and beginner-friendly. Focus on non-technical solutions that can be built using no-code tools and AI assistance.`;
-
-            const finalGuide = await callOpenAIAPI(fullPrompt);
-            finalGuideDisplay.value = finalGuide;
-            showPage5();
+            setTimeout(async () => {
+                const finalGuide = await callOpenAIAPI(guidePrompt);
+                finalGuideDisplay.value = finalGuide;
+                hideLoading();
+                showPage5();
+            }, 300000); // 5 minutes delay
         });
 
         copyFinalGuideBtn.addEventListener('click', () => {
             finalGuideDisplay.select();
             document.execCommand('copy');
             
-            copyFinalGuideBtn.textContent = '✅ COPIED';
+            copyFinalGuideBtn.textContent = '✓ COPIED';
             copyFinalGuideBtn.style.backgroundColor = '#28a745';
             copyFinalGuideBtn.disabled = true;
             
@@ -849,7 +927,7 @@ Make this guide comprehensive, actionable, and beginner-friendly. Focus on non-t
             sessionCompleteFinal.classList.add('fade-in');
         });
 
-        // Demo mode for testing (remove in production)
+        // Demo mode for testing
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             console.log('Demo mode: Add ?access=true to URL to test post-purchase flow');
         }
