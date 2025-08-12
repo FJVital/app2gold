@@ -274,6 +274,41 @@
                 padding-right: 0.75rem;
             }
         }
+        
+        /* Robot character styling */
+        .robot-character {
+            filter: sepia(1) hue-rotate(38deg) saturate(4) brightness(1.2);
+            transition: all 0.3s ease;
+        }
+        
+        .robot-character:hover {
+            transform: scale(1.05);
+            filter: sepia(1) hue-rotate(38deg) saturate(5) brightness(1.4);
+        }
+        
+        /* Multi-page agent flow styling */
+        .agent-page {
+            min-height: 400px;
+        }
+        
+        /* Better textarea styling */
+        textarea {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+        
+        /* Button hover states for colored buttons */
+        .bg-blue-600:hover {
+            background-color: #2563eb;
+        }
+        
+        .bg-green-600:hover {
+            background-color: #16a34a;
+        }
+        
+        .bg-red-500:hover {
+            background-color: #dc2626;
+        }
     </style>
 </head>
 <body class="bg-[#F7F7F7] flex items-center justify-center p-4">
@@ -463,54 +498,140 @@
 
         <!-- Agent Flow Container - Shown when access=true -->
         <section id="agent-flow-section" class="space-y-4 md:space-y-6 hidden">
-            <!-- Welcome Message for Paid Users -->
-            <div id="welcome-message" class="text-center space-y-3 md:space-y-4">
-                <div class="bg-custom-gray p-4 md:p-6 rounded-none">
-                    <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark mb-3">
-                        🎉 Welcome to Your Personal AI Agent!
+            
+            <!-- Page 2: Welcome & User Info Collection -->
+            <div id="agent-page-2" class="text-center space-y-6">
+                <!-- Golden Robot Character -->
+                <div class="flex justify-center items-center mb-6">
+                    <div class="text-8xl robot-character">🤖</div>
+                </div>
+                
+                <div class="space-y-4">
+                    <h2 class="text-xl sm:text-2xl font-bold text-header-dark">
+                        Welcome to Your Personal AI Agent!
                     </h2>
-                    <p class="text-sm sm:text-base text-body-dark font-light">
-                        Thank you for your purchase! Your AI agent is ready to help you create a comprehensive business guide for your app idea. Let's get started on turning your expertise into a profitable product.
+                    <p class="text-sm sm:text-base text-body-dark font-light max-w-2xl mx-auto px-4">
+                        Thanks for your purchase! No coding, no developers can you and your AI agent turning your product idea into a powerful, step-by-step business guide that gets your app ready to launch.
+                        <br><br>
+                        <span class="font-medium text-header-dark">⚠️ Important: This is your one-time consultation session.</span>
                     </p>
                 </div>
-                <hr class="border-[#DBDAD7]">
+                
+                <!-- User Info Form -->
+                <div class="bg-custom-gray p-6 space-y-4 max-w-md mx-auto">
+                    <h3 class="text-lg font-bold text-header-dark text-left">Tell me about you</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="text-left">
+                            <label class="block text-sm font-medium text-body-dark mb-2">Name</label>
+                            <input type="text" id="user-name" class="w-full px-3 py-2 border-black text-body-dark" placeholder="Your Name">
+                        </div>
+                        
+                        <div class="text-left">
+                            <label class="block text-sm font-medium text-body-dark mb-2">Email Address</label>
+                            <input type="email" id="user-email" class="w-full px-3 py-2 border-black text-body-dark" placeholder="you@example.com">
+                        </div>
+                        
+                        <button id="start-project-btn" class="w-full py-3 px-4 btn-primary font-bold text-white">
+                            Start Your Project
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Chat Container -->
-            <div class="bg-custom-gray p-3 md:p-6 space-y-4 md:space-y-6 overflow-y-auto h-80 sm:h-96 rounded-none" id="chat-container">
-                <!-- Agent and user messages will be dynamically appended here -->
+            <!-- Page 3: Main Idea Input -->
+            <div id="agent-page-3" class="hidden">
+                <div class="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-8">
+                    <!-- Main Content -->
+                    <div class="flex-1 space-y-4">
+                        <p class="text-sm sm:text-base text-body-dark font-light leading-relaxed">
+                            Let's get started! Tell me about a product idea you're passionate about or a field you know well—this will be the foundation of our work. The more you share, the stronger and more focused we can make your app. No need for a formal write-up—just drop your thoughts and experiences in any order, and I'll turn them into a clear, compelling description. Take your time—we'll work at your pace. I'm here 24/7 to help. When is ready, click on button bellow.
+                        </p>
+                        
+                        <div class="border-2 border-black p-4 bg-white min-h-[300px]">
+                            <textarea id="main-idea-input" class="w-full h-full min-h-[280px] border-none outline-none resize-none text-body-dark text-sm" placeholder="Share your expertise, passion, or product idea here..."></textarea>
+                        </div>
+                        
+                        <button id="generate-blueprint-btn" class="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all">
+                            Generate Project Blueprint
+                        </button>
+                    </div>
+                    
+                    <!-- Robot Character -->
+                    <div class="flex-shrink-0 lg:w-48">
+                        <div class="text-6xl lg:text-8xl text-center robot-character">🤖</div>
+                    </div>
+                </div>
             </div>
-            
+
+            <!-- Page 4: Project Refinement -->
+            <div id="agent-page-4" class="hidden space-y-6">
+                <div class="space-y-4">
+                    <h3 class="text-lg sm:text-xl font-bold text-header-dark">PROJECT BLUEPRINT</h3>
+                    <p class="text-sm sm:text-base text-body-dark font-light">
+                        Great! Now I know everything we need based on the information you've shared so far. Here's what you told me: missing, or worth adding, let me know—you can update it anytime as we work together. Just tell me what all guide you through the process ensuring every important detail is included.
+                    </p>
+                </div>
+                
+                <div class="border-2 border-black p-4 bg-white min-h-[200px]">
+                    <textarea id="refinement-input" class="w-full h-full min-h-[180px] border-none outline-none resize-none text-body-dark text-sm" placeholder="Add any additional details, clarifications, or changes..."></textarea>
+                </div>
+                
+                <p class="text-sm text-body-dark font-light text-center">
+                    Click button bellow I will generate a complete guide of your project.
+                </p>
+                
+                <button id="generate-guide-btn" class="w-full py-3 px-6 bg-green-600 hover:bg-green-700 text-white font-bold transition-all">
+                    Generate Project Guide
+                </button>
+            </div>
+
+            <!-- Page 5: Final Guide Delivery -->
+            <div id="agent-page-5" class="hidden space-y-6">
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center">🎉 YOUR PROJECT GUIDE</h2>
+                
+                <div class="space-y-4">
+                    <p class="text-sm sm:text-base text-body-dark font-light">
+                        Congratulations! You're holding the key to turning your idea into a powerful, real-world app. This step-by-step guide is your blueprint — and Claude.ai is ready to help you bring your product to life. Good luck entrepreneur, you've got this. And if you're not happy with one of these choices, don't feel like an expert — if you can use a computer, you're good to go because no coding is required.
+                    </p>
+                    
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3">
+                        <p class="text-sm font-medium text-yellow-800">
+                            ⚠️ Session Ending: Please copy your guide now! Your AI consultation session will end after you copy the guide.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <textarea readonly id="final-guide-display" class="w-full h-64 sm:h-80 md:h-96 p-4 border-black bg-white text-body-dark text-xs sm:text-sm resize-none"></textarea>
+                            <button id="copy-final-guide" class="absolute top-2 right-2 px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold transition-all">
+                                COPY
+                            </button>
+                        </div>
+                        
+                        <div class="text-left space-y-2 text-sm text-body-dark font-light">
+                            <p class="font-medium">Ready? Here's how to start:</p>
+                            <p>1️⃣ Click the Copy button at the top-right of the guide.</p>
+                            <p>2️⃣ Paste it into Word, Notepad, or your favorite text editor.</p>
+                            <p>3️⃣ Save it in a dedicated project folder.</p>
+                            <p>4️⃣ Read it carefully, follow the steps, and watch your idea come to life with AI by your side.</p>
+                        </div>
+                        
+                        <div id="session-complete-final" class="hidden">
+                            <div class="bg-green-100 border-l-4 border-green-500 p-3">
+                                <p class="text-sm text-green-800 font-medium">
+                                    ✅ Guide copied! Your session is now complete. Keep this guide safe - you won't be able to access this agent again.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Loading Indicator -->
             <div id="loading-indicator" class="text-center hidden">
                 <i class="fas fa-spinner fa-spin text-header-dark text-xl sm:text-2xl pulse-loading"></i>
                 <p class="mt-2 text-sm sm:text-base md:text-medium text-body-dark pulse-loading">AI Agent is working...</p>
-            </div>
-            
-            <!-- User Input Form -->
-            <form id="user-input-form" class="flex flex-col space-y-3 md:space-y-4 hidden">
-                <label id="input-label" for="user-input" class="text-sm sm:text-base md:text-medium font-medium text-body-dark">Your Response:</label>
-                <textarea id="user-input" class="w-full px-3 md:px-4 py-2 md:py-3 border-black text-body-dark rounded-none text-sm sm:text-base" placeholder="Type your response here..." required rows="3"></textarea>
-                <button type="submit" class="w-full py-2 md:py-3 px-3 md:px-4 btn-primary font-bold rounded-none text-sm sm:text-base">
-                    Send
-                </button>
-            </form>
-            
-            <!-- Final Deliverable Section -->
-            <div id="final-deliverable" class="hidden">
-                <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center px-4">Your Product Guide is Ready!</h2>
-                <div class="bg-custom-gray p-4 md:p-6 space-y-3 md:space-y-4 rounded-none">
-                    <p class="text-sm sm:text-base md:text-medium text-body-dark font-light">Congratulations! Your AI agent has created a detailed, monetizable product guide. Copy the text below and use it with a large language model (like ChatGPT Plus or Claude) to get step-by-step guidance on your project. This document serves as your complete business plan.</p>
-                    <textarea readonly class="w-full h-64 sm:h-80 md:h-96 mt-4 p-3 md:p-4 border-black bg-white text-body-dark rounded-none text-xs sm:text-sm" id="final-guide-text"></textarea>
-                    <button id="copy-button" class="w-full py-2 md:py-3 px-3 md:px-4 btn-primary font-bold rounded-none text-sm sm:text-base">
-                        Copy Guide to Clipboard
-                    </button>
-                    <div class="text-center mt-4">
-                        <p class="text-sm text-body-dark font-light opacity-75">
-                            ✅ Your guide is complete! Use this with any AI tool to start building your app.
-                        </p>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -524,20 +645,32 @@
         const landingContent = document.getElementById('landing-content');
         const agentFlowSection = document.getElementById('agent-flow-section');
         const successBanner = document.getElementById('success-banner');
-        const chatContainer = document.getElementById('chat-container');
         const loadingIndicator = document.getElementById('loading-indicator');
-        const userInputForm = document.getElementById('user-input-form');
-        const userInput = document.getElementById('user-input');
-        const inputLabel = document.getElementById('input-label');
-        const finalDeliverable = document.getElementById('final-deliverable');
-        const copyButton = document.getElementById('copy-button');
+
+        // Agent pages
+        const agentPage2 = document.getElementById('agent-page-2');
+        const agentPage3 = document.getElementById('agent-page-3');
+        const agentPage4 = document.getElementById('agent-page-4');
+        const agentPage5 = document.getElementById('agent-page-5');
+
+        // Form elements
+        const userNameInput = document.getElementById('user-name');
+        const userEmailInput = document.getElementById('user-email');
+        const startProjectBtn = document.getElementById('start-project-btn');
+        const mainIdeaInput = document.getElementById('main-idea-input');
+        const generateBlueprintBtn = document.getElementById('generate-blueprint-btn');
+        const refinementInput = document.getElementById('refinement-input');
+        const generateGuideBtn = document.getElementById('generate-guide-btn');
+        const finalGuideDisplay = document.getElementById('final-guide-display');
+        const copyFinalGuideBtn = document.getElementById('copy-final-guide');
+        const sessionCompleteFinal = document.getElementById('session-complete-final');
 
         // Agent conversation state
         let userName = '';
         let userEmail = '';
-        let currentStep = 0;
-        let productIdeas = [];
-        const model = "gpt-4o-mini"; // Cost-effective and perfect for this use case
+        let userIdea = '';
+        let refinementText = '';
+        const model = "gpt-4o-mini";
 
         // Initialize page based on access
         if (hasAccess) {
@@ -551,134 +684,126 @@
                 successBanner.classList.add('hidden');
             }, 5000);
             
-            // Start the agent conversation
-            initializeAgentFlow();
+            // Start with page 2 (user info collection)
+            showPage2();
         } else {
             // Regular landing page visitor
             landingContent.classList.remove('hidden');
             agentFlowSection.classList.add('hidden');
         }
 
+        // Page navigation functions
+        function hideAllPages() {
+            agentPage2.classList.add('hidden');
+            agentPage3.classList.add('hidden');
+            agentPage4.classList.add('hidden');
+            agentPage5.classList.add('hidden');
+        }
+
+        function showPage2() {
+            hideAllPages();
+            agentPage2.classList.remove('hidden');
+            agentPage2.classList.add('fade-in');
+        }
+
+        function showPage3() {
+            hideAllPages();
+            agentPage3.classList.remove('hidden');
+            agentPage3.classList.add('fade-in');
+        }
+
+        function showPage4() {
+            hideAllPages();
+            agentPage4.classList.remove('hidden');
+            agentPage4.classList.add('fade-in');
+        }
+
+        function showPage5() {
+            hideAllPages();
+            agentPage5.classList.remove('hidden');
+            agentPage5.classList.add('fade-in');
+        }
+
         function addMessage(sender, text) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', 'mb-4', 'p-4', 'shadow-sm', 'rounded-none', 'slide-in');
-            
-            const formattedText = text.replace(/^-/gm, '*').replace(/\n\n/g, '<br><br>');
-            let content = formattedText;
-            
-            if (sender === 'agent') {
-                messageDiv.classList.add('bg-custom-gray', 'text-body-dark', 'agent-message');
-                messageDiv.innerHTML = `<i class="fa-solid fa-robot mr-2"></i><span class="font-bold">AI Agent:</span> ${content}`;
-            } else {
-                messageDiv.classList.add('bg-[#5E5A49]', 'text-white', 'user-message');
-                messageDiv.innerHTML = `<span class="font-bold">You:</span> ${content}`;
-            }
-            chatContainer.appendChild(messageDiv);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+            // This function is no longer needed in the new design
         }
 
         async function callOpenAIAPI(prompt) {
-    loadingIndicator.classList.remove('hidden');
-    
-    try {
-        const response = await fetch('/api/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                prompt: prompt,
-                accessCode: 'app2gold-purchased-2025'
-            })
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Server error: ${response.statusText}`);
-        }
-        
-        const result = await response.json();
-        loadingIndicator.classList.add('hidden');
-        
-        if (result.choices && result.choices.length > 0 && result.choices[0].message) {
-            return result.choices[0].message.content;
-        } else {
-            return "Sorry, I couldn't generate a response. Please try again.";
-        }
-        
-    } catch (error) {
-        loadingIndicator.classList.add('hidden');
-        console.error("Failed to fetch from API:", error);
-        return "An error occurred while connecting to the AI. Please check your internet connection and try again.";
-    }
-}
-        // Main agent flow function
-        async function startAgentFlow(userResponse) {
-            userInputForm.classList.add('hidden');
             loadingIndicator.classList.remove('hidden');
             
-            let agentResponse = '';
-            
-            switch (currentStep) {
-                case 0:
-                    // Initial greeting
-                    addMessage('agent', `Hello! I'm your dedicated AI agent, ready to help you turn your product idea into a reality.`);
-                    await new Promise(res => setTimeout(res, 1500));
-                    addMessage('agent', `To get started, please tell me about a field you're an expert in, or share a product idea you're passionate about. This will be the foundation of our work together.`);
-                    
-                    inputLabel.textContent = "Your Expertise or Idea:";
-                    userInput.placeholder = "e.g., 'I'm a fitness trainer' or 'I have an idea for a productivity app'";
-                    userInputForm.classList.remove('hidden');
-                    userInputForm.classList.add('fade-in');
-                    loadingIndicator.classList.add('hidden');
-                    currentStep = 1;
-                    break;
-                    
-                case 1:
-                    // Process initial input and generate ideas
-                    addMessage('user', userResponse);
-                    inputLabel.textContent = "Your Choice:";
-                    
-                    agentResponse = await callOpenAIAPI(`Based on the expertise area or product idea "${userResponse}", generate two unique, non-technical digital product ideas for a beginner to create and monetize. The ideas should not require coding. For each idea, include:
-                    1. A clear, compelling name.
-                    2. A brief description of the product.
-                    3. The target audience.
-                    4. The main problem it solves.
-                    Format the response clearly with numbered headings for each product idea.`);
-                    
-                    addMessage('agent', agentResponse);
-                    productIdeas = agentResponse;
-                    
-                    await new Promise(res => setTimeout(res, 1000));
-                    addMessage('agent', "Great! Here are two product ideas tailored to your expertise. Please choose the one you'd like to explore further by typing '1' or '2'.");
-                    
-                    userInput.value = '';
-                    userInput.placeholder = "Type 1 or 2...";
-                    userInputForm.classList.remove('hidden');
-                    userInputForm.classList.add('fade-in');
-                    loadingIndicator.classList.add('hidden');
-                    currentStep = 2;
-                    break;
-                    
-                case 2:
-                    // Process choice and generate final guide
-                    addMessage('user', userResponse);
-                    const chosenIdeaNumber = parseInt(userResponse);
-                    
-                    if (chosenIdeaNumber === 1 || chosenIdeaNumber === 2) {
-                        let chosenIdea = '';
-                        const ideasArray = productIdeas.split('2. ');
-                        chosenIdea = (chosenIdeaNumber === 1) ? ideasArray[0] : '2. ' + ideasArray[1];
-                        
-                        addMessage('agent', `Excellent choice! I'm now creating your comprehensive business guide with market research and implementation roadmap. This will take a moment...`);
-                        
-                        agentResponse = await callOpenAIAPI(`For this product idea: "${chosenIdea}", conduct a comprehensive market research analysis and create a detailed implementation roadmap. 
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        accessCode: 'app2gold-purchased-2025'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                loadingIndicator.classList.add('hidden');
+                
+                if (result.choices && result.choices.length > 0 && result.choices[0].message) {
+                    return result.choices[0].message.content;
+                } else {
+                    return "Sorry, I couldn't generate a response. Please try again.";
+                }
+                
+            } catch (error) {
+                loadingIndicator.classList.add('hidden');
+                console.error("Failed to fetch from API:", error);
+                return "An error occurred while connecting to the AI. Please check your internet connection and try again.";
+            }
+        }
 
-Please structure your response as follows:
+        // Event handlers for the new multi-page flow
+        startProjectBtn.addEventListener('click', () => {
+            const name = userNameInput.value.trim();
+            const email = userEmailInput.value.trim();
+            
+            if (name && email) {
+                userName = name;
+                userEmail = email;
+                showPage3();
+            } else {
+                alert('Please enter your name and email to continue.');
+            }
+        });
+
+        generateBlueprintBtn.addEventListener('click', async () => {
+            const ideaText = mainIdeaInput.value.trim();
+            
+            if (ideaText) {
+                userIdea = ideaText;
+                showPage4();
+            } else {
+                alert('Please share your idea or expertise to continue.');
+            }
+        });
+
+        generateGuideBtn.addEventListener('click', async () => {
+            refinementText = refinementInput.value.trim();
+            
+            // Generate the final guide
+            const fullPrompt = `Create a comprehensive business guide for this product idea:
+
+Primary Idea: ${userIdea}
+
+Additional Details: ${refinementText || 'No additional details provided'}
+
+Create a detailed business guide with the following structure:
 
 # Your Complete Product Guide: [Product Name]
 
 ## Product Overview
-[Brief summary of the chosen product]
+[Brief summary of the product]
 
 ## Market Research Analysis
 - Target market size and demographics
@@ -705,46 +830,23 @@ Provide 5 clear, actionable steps for a beginner to build and launch this produc
 - Resources needed
 - Timeline expectations
 
-Make this guide comprehensive, actionable, and beginner-friendly.`);
-                        
-                        addMessage('agent', `🎉 Perfect! I've created your complete business guide. This comprehensive document includes market research, competitive analysis, and a step-by-step implementation roadmap. You can now copy this guide and use it with any AI tool to start building your product!`);
-                        
-                        document.getElementById('final-guide-text').value = agentResponse;
-                        userInputForm.classList.add('hidden');
-                        loadingIndicator.classList.add('hidden');
-                        finalDeliverable.classList.remove('hidden');
-                        finalDeliverable.classList.add('fade-in');
-                        currentStep = 3;
-                    } else {
-                        addMessage('agent', "That wasn't a valid option. Please type '1' or '2' to choose an idea.");
-                        userInputForm.classList.remove('hidden');
-                        userInputForm.classList.add('fade-in');
-                        loadingIndicator.classList.add('hidden');
-                    }
-                    break;
-            }
-        }
+Make this guide comprehensive, actionable, and beginner-friendly. Focus on non-technical solutions that can be built using no-code tools and AI assistance.`;
 
-        // Event listeners
-        userInputForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const userResponse = userInput.value.trim();
-            if (userResponse) {
-                userInput.value = '';
-                startAgentFlow(userResponse);
-            }
+            const finalGuide = await callOpenAIAPI(fullPrompt);
+            finalGuideDisplay.value = finalGuide;
+            showPage5();
         });
 
-        copyButton.addEventListener('click', () => {
-            const guideText = document.getElementById('final-guide-text');
-            guideText.select();
+        copyFinalGuideBtn.addEventListener('click', () => {
+            finalGuideDisplay.select();
             document.execCommand('copy');
-            copyButton.textContent = '✅ Copied!';
-            copyButton.style.backgroundColor = '#28a745';
-            setTimeout(() => {
-                copyButton.textContent = 'Copy Guide to Clipboard';
-                copyButton.style.backgroundColor = '#5E5A49';
-            }, 3000);
+            
+            copyFinalGuideBtn.textContent = '✅ COPIED';
+            copyFinalGuideBtn.style.backgroundColor = '#28a745';
+            copyFinalGuideBtn.disabled = true;
+            
+            sessionCompleteFinal.classList.remove('hidden');
+            sessionCompleteFinal.classList.add('fade-in');
         });
 
         // Demo mode for testing (remove in production)
