@@ -456,12 +456,12 @@
                     
                     <!-- Benefits List -->
                     <div class="text-left space-y-2 px-4 py-3 text-sm sm:text-base font-light text-body-dark">
-                        <p><span class="font-bold">1. Simplicity & Transparency</span> – You pay once, the deal is done. No ongoing billing cycles, interest rates, or hidden fees to track.</p>
-                        <p><span class="font-bold">2. Cost Savings</span> – Avoid recurring charges, financing interest, or renewal fees.</p>
-                        <p><span class="font-bold">3. Instant Access</span> – Payment is complete upfront, so you can often start using the product or service immediately without waiting for approvals or multiple payments.</p>
-                        <p><span class="font-bold">4. No Commitment Anxiety</span> – No risk of forgetting to cancel a subscription or being locked into a long-term contract.</p>
-                        <p><span class="font-bold">5. Peace of Mind</span> – You don't have to budget for future payments or worry about price increases.</p>
-                        <p><span class="font-bold">6. Fewer Administrative Hassles</span> – No need to update payment methods, handle monthly invoices, or deal with failed payment alerts.</p>
+                        <p><span class="font-bold">1. Simplicity & Transparency</span> — You pay once, the deal is done. No ongoing billing cycles, interest rates, or hidden fees to track.</p>
+                        <p><span class="font-bold">2. Cost Savings</span> — Avoid recurring charges, financing interest, or renewal fees.</p>
+                        <p><span class="font-bold">3. Instant Access</span> — Payment is complete upfront, so you can often start using the product or service immediately without waiting for approvals or multiple payments.</p>
+                        <p><span class="font-bold">4. No Commitment Anxiety</span> — No risk of forgetting to cancel a subscription or being locked into a long-term contract.</p>
+                        <p><span class="font-bold">5. Peace of Mind</span> — You don't have to budget for future payments or worry about price increases.</p>
+                        <p><span class="font-bold">6. Fewer Administrative Hassles</span> — No need to update payment methods, handle monthly invoices, or deal with failed payment alerts.</p>
                     </div>
                     
                     <!-- Gumroad Buy Button -->
@@ -526,14 +526,8 @@
                 </div>
             </div>
 
-            <!-- Page 3: Main Idea Input -->
+            <!-- Page 3: Main Idea Input (LOGO REMOVED) -->
             <div id="agent-page-3" class="hidden agent-page">
-                <!-- Logo - Same size as page 1 (30%) -->
-                <div class="flex justify-center items-center mb-4">
-                    <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
-                </div>
-                <p class="text-center text-sm font-light text-header-dark mb-6">Your App. Your Success.</p>
-                
                 <div class="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-8">
                     <!-- Main Content -->
                     <div class="flex-1 space-y-4">
@@ -559,14 +553,8 @@
                 </div>
             </div>
 
-            <!-- Page 4: Project Blueprint Display & Refinement -->
+            <!-- Page 4: Project Blueprint Display & Refinement (LOGO REMOVED) -->
             <div id="agent-page-4" class="hidden space-y-6 agent-page">
-                <!-- Logo -->
-                <div class="flex justify-center items-center mb-4">
-                    <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
-                </div>
-                <p class="text-center text-sm font-light text-header-dark mb-6">Your App. Your Success.</p>
-                
                 <div class="space-y-4">
                     <h3 class="text-lg sm:text-xl font-bold text-header-dark">PROJECT BLUEPRINT</h3>
                     <p class="text-sm sm:text-base text-body-dark font-light">
@@ -597,13 +585,8 @@
                 </button>
             </div>
 
-            <!-- Page 5: Final Guide Delivery -->
+            <!-- Page 5: Final Guide Delivery (LOGO REMOVED) -->
             <div id="agent-page-5" class="hidden space-y-6 agent-page">
-                <!-- Logo -->
-                <div class="flex justify-center items-center mb-4">
-                    <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
-                </div>
-                
                 <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center">YOUR PROJECT GUIDE</h2>
                 
                 <div class="space-y-4">
@@ -898,14 +881,163 @@
             refinementText = refinementInput.value.trim();
             showLoading('guide');
             
-            // Generate the final comprehensive guide
-            const guidePrompt = `Create a comprehensive business guide using the improved template format for this project:
+            // UPDATED AI PROMPT - Now enforces complete template format
+            const guidePrompt = `Create a comprehensive business guide using the EXACT app2gold template format. Fill out every section of this template for the user's specific project:
 
-Primary Idea: ${userIdea}
-Project Description: ${projectDescription.textContent}
+User's Project: ${userIdea}
+User's Name: ${userName}
 Additional Details: ${refinementText || 'No additional details provided'}
 
-Generate the complete guide using the app2gold template format with all sections filled out appropriately for this specific project.`;
+Use this EXACT template structure and fill in all sections appropriately:
+
+# app2gold - Complete AI Guide Blueprint
+
+## INSTRUCTIONS FOR YOU:
+1. **Open Claude.ai** (get the Pro plan for best results - it's $20/month and worth every penny for this project)
+2. **Paste this message to Claude:**
+   > "Hello Claude, I am building a digital app/product based on my expertise in [YOUR EXPERTISE AREA]. I have a complete business guide that outlines my project, target market, and implementation strategy. Please help me bring this vision to life by providing step-by-step guidance, answering my questions, and helping me navigate the technical and business challenges ahead. I'm ready to work with you as my AI mentor to make this project successful."
+3. **Attach this guide** in Word, Notepad, or your favorite text editor as a document when you send the message
+4. **Send the message** and Claude will become your dedicated AI business mentor
+5. **Claude will:** Help you refine your concept, choose the right no-code platform, create marketing strategies, solve technical problems, plan your launch, optimize for growth, and provide ongoing guidance throughout your journey
+
+## About Claude.ai:
+Claude.ai serves as your always-available AI development mentor. Think of Claude as your expert consultant who knows business strategy, marketing, no-code development, and app creation. Claude can help you make smart decisions, avoid common mistakes, and accelerate your progress. With Claude's guidance, you'll have an experienced "business partner" available 24/7 to help you succeed.
+
+## YOUR PROJECT OVERVIEW
+**Date:** ${new Date().toLocaleDateString()}
+**Client:** ${userName}
+**Project Name:** [Project name based on user's idea]
+**Description:** [Detailed description based on user's input]
+
+**Your Profile:**
+• **Expertise Area:** [Based on user's input]
+• **Specialization:** [Based on user's input]
+• **Computer System:** Mac or Windows
+• **Time Investment:** Work at your own pace - evenings, weekends, or full-time
+• **Budget Range:** Choose from ultra-low ($0-50/month) to premium ($500+/month) options below
+
+## BUDGET PLANNING & DEVELOPMENT OPTIONS
+**Ultra Low Budget ($0-$50/month):** No-code platforms like Bubble.io (free tier), Glide (free tier), or AppSheet. Perfect for validating your concept and building a basic MVP.
+
+**Low Budget ($50-$200/month):** Premium no-code tools like Bubble.io Pro, Webflow, or Adalo Pro. Includes custom domains, more features, and professional styling options.
+
+**Medium Budget ($200-$500/month):** Advanced no-code platforms like Bubble.io Professional, custom integrations, premium plugins, and marketing tools like ConvertKit or Mailchimp Pro.
+
+**Higher Budget ($500+/month):** Enterprise no-code solutions, custom development hybrid approach, professional design services, and comprehensive marketing automation.
+
+**Recommended Starting Point:** Begin with the Ultra Low Budget option to validate your concept, then scale up as you gain users and revenue.
+
+## YOUR 6-STEP SUCCESS ROADMAP
+
+### **Step 1: Conduct Market Research**
+**What Claude will help you with:**
+- Define your target audience personas with specific demographics and pain points
+- Analyze competitor apps and pricing strategies in your niche
+- Identify market gaps and opportunities for differentiation
+- Validate demand through surveys, interviews, or landing page tests
+- Research keywords and SEO opportunities for your app category
+
+### **Step 2: Choose Your Development Platform**
+**What Claude will help you with:**
+- Compare no-code platforms based on your specific app requirements
+- Set up your chosen platform with optimal settings and configurations
+- Plan your app's database structure and user flow
+- Design wireframes and user interface mockups
+- Create a development timeline that fits your schedule and budget
+
+### **Step 3: Build Your Minimum Viable Product (MVP)**
+**What Claude will help you with:**
+- Prioritize essential features for your first version
+- Guide you through platform-specific tutorials and best practices
+- Troubleshoot technical issues and platform limitations
+- Optimize your app's performance and user experience
+- Implement basic analytics to track user behavior
+
+### **Step 4: Test and Refine**
+**What Claude will help you with:**
+- Design user testing protocols and feedback collection systems
+- Analyze user feedback and identify improvement priorities
+- Plan and implement feature updates and bug fixes
+- Optimize conversion funnels and user onboarding
+- Prepare for scaling to handle more users
+
+### **Step 5: Launch and Market**
+**What Claude will help you with:**
+- Develop a comprehensive marketing strategy tailored to your audience
+- Create compelling app store listings and marketing materials
+- Plan social media campaigns and content marketing strategies
+- Set up analytics and tracking to measure marketing effectiveness
+- Implement customer acquisition and retention strategies
+
+### **Step 6: Scale and Optimize**
+**What Claude will help you with:**
+- Analyze performance metrics and identify growth opportunities
+- Plan advanced features and product roadmap
+- Optimize for profitability and sustainable growth
+- Explore partnership and expansion opportunities
+- Develop systems for customer support and community building
+
+## COMMON PITFALLS TO AVOID
+1. **Feature Creep:** Don't add too many features at once. Start simple and add features based on user feedback.
+2. **Perfectionism:** Launch with a good MVP rather than waiting for perfection. You can improve based on real user data.
+3. **Ignoring User Feedback:** Your assumptions about what users want may be wrong. Listen to actual user needs and adapt.
+4. **Underestimating Marketing:** Even the best app needs effective marketing. Plan for customer acquisition from day one.
+5. **Platform Lock-in:** Choose platforms that allow data export and avoid getting trapped with one provider.
+6. **Neglecting Analytics:** Set up tracking early to understand user behavior and make data-driven decisions.
+7. **Pricing Too Low:** Value your work appropriately. It's easier to lower prices than to raise them later.
+
+## SUCCESS TIMELINE (WORK AT YOUR PACE)
+**Week 1-2:** Market research and validation
+**Week 3-4:** Platform selection and setup
+**Week 5-8:** MVP development and initial testing
+**Week 9-10:** Refinement based on feedback
+**Week 11-12:** Launch preparation and marketing setup
+**Week 13+:** Launch, marketing, and ongoing optimization
+
+*Note: This timeline is flexible. Work at your own pace - some people complete this in 6 weeks, others take 6 months. The key is consistent progress.*
+
+## NEXT STEPS FOR SUCCESS
+**Sample Questions to Ask Claude:**
+- "Which no-code platform is best for my specific app idea?"
+- "How do I set up user authentication in [platform name]?"
+- "What's the best way to price my app for [target audience]?"
+- "How can I validate my idea before building the full app?"
+- "What marketing strategies work best for apps like mine?"
+- "How do I handle customer support and feedback collection?"
+- "What analytics should I track to measure success?"
+- "How do I optimize my app store listing for better visibility?"
+
+## RESOURCES & TOOLS
+**Free Development Tools:** Figma (design), Bubble.io (no-code development), Google Analytics (tracking), Canva (graphics), Unsplash (images)
+
+**Paid Tools Worth The Investment:** Claude.ai Pro ($20/month), Bubble.io Pro ($29/month), ConvertKit (email marketing), Hotjar (user behavior analytics)
+
+**Learning Resources:** Bubble.io Academy, YouTube tutorials for your chosen platform, no-code community forums, product hunt for competitive research
+
+**Support Communities:** No-code makers communities, Bubble.io forum, Indie Hackers, Product Hunt makers community
+
+## POST-LAUNCH STRATEGY
+**1** Focus on user acquisition and feedback collection through targeted marketing and in-app feedback systems
+**2** Implement user-requested features and improvements based on data and feedback analysis
+**3** Scale marketing efforts and plan advanced features for version 2.0 of your app
+**4** Expand to new markets or create complementary products that serve your existing user base
+
+---
+
+**IMPORTANT:** This guide is designed to work seamlessly with Claude.ai. Simply open Claude, paste the introduction message above, attach this guide, and start your journey. Claude will provide personalized guidance every step of the way.
+
+**Remember:** Success comes from taking action. Start with step 1 today, and let Claude guide you through each phase of building your profitable app business.
+
+IMPORTANT: 
+- Use the EXACT section headings and structure shown above
+- Fill in all placeholders with project-specific information based on the user's input
+- Keep all instructional text about Claude.ai exactly as written
+- Include all budget tiers, tools, and resources as specified
+- Maintain the complete 6-step roadmap format with "What Claude will help you with" sections
+- Include all sample questions and next steps exactly as formatted
+- Ensure the guide is comprehensive and ready for immediate use with Claude.ai
+
+Make this specific to their project while keeping the template structure completely intact.`;
 
             setTimeout(async () => {
                 const finalGuide = await callOpenAIAPI(guidePrompt);
