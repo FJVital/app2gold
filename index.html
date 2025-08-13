@@ -273,15 +273,17 @@
             filter: brightness(0.95);
         }
         
-        /* Standardized small text size */
-        .text-standard-small {
+        /* Standardized text size - matches "Thanks for your purchase!" */
+        .text-standard {
             font-size: 0.875rem;
             line-height: 1.25rem;
+            font-weight: 300;
         }
         
-        /* 50% reduced tagline */
+        /* 50% reduced tagline for ALL pages */
         .tagline-small {
-            font-size: 0.5em;
+            font-size: 0.7rem;
+            line-height: 1rem;
         }
         
         /* Responsive fixes */
@@ -299,9 +301,14 @@
                 font-size: 1.125rem;
             }
             
-            .text-standard-small {
+            .text-standard {
                 font-size: 0.75rem;
                 line-height: 1.125rem;
+            }
+            
+            .tagline-small {
+                font-size: 0.6rem;
+                line-height: 0.875rem;
             }
         }
         
@@ -509,7 +516,7 @@
                     <h2 class="text-xl sm:text-2xl font-bold text-header-dark">
                         Welcome to Your Personal AI Agent!
                     </h2>
-                    <p class="text-sm sm:text-base text-body-dark font-light max-w-2xl mx-auto px-4">
+                    <p class="text-standard text-body-dark max-w-2xl mx-auto px-4">
                         Thanks for your purchase! No coding, no developers can you and your AI agent turning your product idea into a powerful, step-by-step business guide that gets your app ready to launch.
                     </p>
                 </div>
@@ -520,13 +527,13 @@
                     
                     <div class="space-y-4">
                         <div class="text-left">
-                            <label class="block text-sm font-medium text-body-dark mb-2">Name</label>
-                            <input type="text" id="user-name" class="w-full px-3 py-2 border-black text-body-dark" placeholder="Your Name">
+                            <label class="block text-standard font-medium text-body-dark mb-2">Name</label>
+                            <input type="text" id="user-name" class="w-full px-3 py-2 border-black text-body-dark text-standard" placeholder="Your Name">
                         </div>
                         
                         <div class="text-left">
-                            <label class="block text-sm font-medium text-body-dark mb-2">Email Address</label>
-                            <input type="email" id="user-email" class="w-full px-3 py-2 border-black text-body-dark" placeholder="you@example.com">
+                            <label class="block text-standard font-medium text-body-dark mb-2">Email Address</label>
+                            <input type="email" id="user-email" class="w-full px-3 py-2 border-black text-body-dark text-standard" placeholder="you@example.com">
                         </div>
                         
                         <button id="start-project-btn" class="w-full py-3 px-4 btn-primary font-bold text-white">
@@ -538,11 +545,11 @@
                 <!-- Warning with Yellow Triangle -->
                 <div class="flex items-center justify-center space-x-2 max-w-md mx-auto">
                     <img src="./images/yellow_triangle.png" alt="Warning" class="h-12 w-12">
-                    <span class="text-standard-small font-medium text-header-dark">Important: This is your one-time consultation session.</span>
+                    <span class="text-standard font-medium text-header-dark">Important: This is your one-time consultation session.</span>
                 </div>
             </div>
 
-            <!-- Page 3: Main Idea Input (LOGO REMOVED) -->
+            <!-- Page 3: Main Idea Input -->
             <div id="agent-page-3" class="hidden agent-page">
                 <p class="text-center tagline-small font-light text-header-dark mb-6">Your App. Your Success.</p>
                 
@@ -551,12 +558,12 @@
                     <div class="flex-1 space-y-4">
                         <h2 class="text-xl sm:text-2xl font-bold text-body-dark mb-4">Thank You for Choosing Me as Your Guide</h2>
                         
-                        <p class="text-sm sm:text-base text-body-dark font-light leading-relaxed mb-6">
+                        <p class="text-standard text-body-dark leading-relaxed mb-6">
                             Let's begin this exciting journey together. I'm thrilled you've decided to take the first step toward bringing your idea to life—an idea you believe in, one that has the potential to become a true success. Congratulations on your decision to start, and good luck. Let's build something extraordinary.
                         </p>
                         
                         <div class="border-2 border-black p-4 bg-white min-h-[300px]">
-                            <textarea id="main-idea-input" class="w-full h-full min-h-[280px] border-none outline-none resize-none text-body-dark text-standard-small" placeholder="Share your idea, expertise, passion, or product here..."></textarea>
+                            <textarea id="main-idea-input" class="w-full h-full min-h-[280px] border-none outline-none resize-none text-body-dark text-standard" placeholder="Share your idea, expertise, passion, or product here..."></textarea>
                         </div>
                         
                         <button id="generate-blueprint-btn" class="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all">
@@ -571,32 +578,32 @@
                 </div>
             </div>
 
-            <!-- Page 4: Project Blueprint Display & Refinement (LOGO REMOVED) -->
+            <!-- Page 4: Project Blueprint Display & Refinement -->
             <div id="agent-page-4" class="hidden space-y-6 agent-page">
                 <p class="text-center tagline-small font-light text-header-dark mb-6">Your App. Your Success.</p>
                 
                 <div class="space-y-4">
                     <h3 class="text-lg sm:text-xl font-bold text-header-dark">PROJECT BLUEPRINT</h3>
-                    <p class="text-standard-small text-body-dark font-light">
+                    <p class="text-standard text-body-dark">
                         Project description based on the information you've shared so far.
                     </p>
                 </div>
                 
                 <!-- Generated Project Description -->
                 <div class="border-2 border-black p-4 bg-white min-h-[200px]">
-                    <div id="project-description" class="text-sm text-body-dark whitespace-pre-wrap"></div>
+                    <div id="project-description" class="text-standard text-body-dark whitespace-pre-wrap"></div>
                 </div>
                 
-                <p class="text-standard-small text-body-dark font-light">
+                <p class="text-standard text-body-dark">
                     In the camp below write any change that you want to the blueprint project above. Add, clarify, or delete any idea. (optional)
                 </p>
                 
                 <!-- Refinement Input -->
                 <div class="border-2 border-black p-4 bg-white min-h-[150px]">
-                    <textarea id="refinement-input" class="w-full h-full min-h-[130px] border-none outline-none resize-none text-body-dark text-standard-small" placeholder="Add any changes, clarifications, or additional details..."></textarea>
+                    <textarea id="refinement-input" class="w-full h-full min-h-[130px] border-none outline-none resize-none text-body-dark text-standard" placeholder="Add any changes, clarifications, or additional details..."></textarea>
                 </div>
                 
-                <p class="text-standard-small text-body-dark font-light text-center">
+                <p class="text-standard text-body-dark text-center">
                     Click button below I will generate a complete guide of your project.
                 </p>
                 
@@ -605,14 +612,14 @@
                 </button>
             </div>
 
-            <!-- Page 5: Final Guide Delivery (LOGO REMOVED) -->
+            <!-- Page 5: Final Guide Delivery -->
             <div id="agent-page-5" class="hidden space-y-6 agent-page">
                 <p class="text-center tagline-small font-light text-header-dark mb-6">Your App. Your Success.</p>
                 
                 <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center">YOUR PROJECT GUIDE</h2>
                 
                 <div class="space-y-4">
-                    <p class="text-sm sm:text-base text-body-dark font-light">
+                    <p class="text-standard text-body-dark">
                         Congratulations! You're holding the key to turning your idea into a powerful, real-world app. This step-by-step guide is your blueprint — and Claude.ai is ready to help you bring your product to life. Good luck entrepreneur, you've got this. And if you're not happy with one of these choices, don't feel like an expert — if you can use a computer, you're good to go because no coding is required.
                     </p>
                     
@@ -627,12 +634,12 @@
                         <!-- Warning with Yellow Triangle -->
                         <div class="flex items-start space-x-2">
                             <img src="./images/yellow_triangle.png" alt="Warning" class="h-12 w-12 mt-1 flex-shrink-0">
-                            <div class="text-standard-small text-green-600 font-bold">
+                            <div class="text-standard text-green-600 font-bold">
                                 Session Ending: Please copy your guide now! Your AI consultation session will end after you copy the guide.
                             </div>
                         </div>
                         
-                        <div class="text-left space-y-2 text-standard-small text-body-dark font-light">
+                        <div class="text-left space-y-2 text-standard text-body-dark">
                             <p class="font-medium">Ready? Here's how to start:</p>
                             <div class="progress-item">
                                 <span class="progress-number">1</span>
@@ -654,7 +661,7 @@
                         
                         <div id="session-complete-final" class="hidden">
                             <div class="p-3">
-                                <p class="text-sm text-green-800 font-bold">
+                                <p class="text-standard text-green-800 font-bold">
                                     Guide copied! Your session is now complete. Keep this guide safe - you won't be able to access this agent again.
                                 </p>
                             </div>
@@ -669,11 +676,11 @@
                     <img src="./images/star.png" alt="Processing" class="h-24 w-24 rotating-star">
                 </div>
                 <div id="loading-progress" class="space-y-2 max-w-md mx-auto">
-                    <div id="progress-text" class="text-standard-small text-body-dark font-medium"></div>
-                    <div id="progress-steps" class="text-left text-standard-small text-body-dark space-y-1"></div>
+                    <div id="progress-text" class="text-standard text-body-dark font-medium"></div>
+                    <div id="progress-steps" class="text-left text-standard text-body-dark space-y-1"></div>
                     <div class="flex items-start space-x-2 p-3 mt-4">
                         <img src="./images/yellow_triangle.png" alt="Warning" class="h-12 w-12 mt-1 flex-shrink-0">
-                        <p class="text-standard-small text-yellow-800 font-medium">
+                        <p class="text-standard text-yellow-800 font-medium">
                             Please don't close or restart your browser. Don't turn off or restart your computer until the job is complete.
                         </p>
                     </div>
@@ -874,12 +881,12 @@
             formatted = formatted.replace(/YOUR PROJECT OVERVIEW/g, '📋 YOUR PROJECT OVERVIEW');
             formatted = formatted.replace(/BUDGET PLANNING & DEVELOPMENT OPTIONS/g, '💰 BUDGET PLANNING & DEVELOPMENT OPTIONS');
             formatted = formatted.replace(/YOUR 6-STEP SUCCESS ROADMAP/g, '🚀 YOUR 6-STEP SUCCESS ROADMAP');
-            formatted = formatted.replace(/Step 1:/g, '📊 Step 1:');
-            formatted = formatted.replace(/Step 2:/g, '🛠️ Step 2:');
-            formatted = formatted.replace(/Step 3:/g, '⚡ Step 3:');
-            formatted = formatted.replace(/Step 4:/g, '🧪 Step 4:');
-            formatted = formatted.replace(/Step 5:/g, '🚀 Step 5:');
-            formatted = formatted.replace(/Step 6:/g, '📈 Step 6:');
+            formatted = formatted.replace(/Stage 1:/g, '📊 Stage 1:');
+            formatted = formatted.replace(/Stage 2:/g, '🛠️ Stage 2:');
+            formatted = formatted.replace(/Stage 3:/g, '⚡ Stage 3:');
+            formatted = formatted.replace(/Stage 4:/g, '🧪 Stage 4:');
+            formatted = formatted.replace(/Stage 5:/g, '🚀 Stage 5:');
+            formatted = formatted.replace(/Stage 6:/g, '📈 Stage 6:');
             formatted = formatted.replace(/COMMON PITFALLS TO AVOID/g, '⚠️ COMMON PITFALLS TO AVOID');
             formatted = formatted.replace(/SUCCESS TIMELINE/g, '⏰ SUCCESS TIMELINE');
             formatted = formatted.replace(/NEXT STEPS FOR SUCCESS/g, '✅ NEXT STEPS FOR SUCCESS');
@@ -935,43 +942,39 @@
             refinementText = refinementInput.value.trim();
             showLoading('guide');
             
-            // UPDATED AI PROMPT - Now includes full description and complete template
-            const guidePrompt = `Create a comprehensive business guide using the EXACT app2gold template format. Fill out every section of this template for the user's specific project:
+            // OPTIMIZED AI PROMPT - Structured for complete generation
+            const guidePrompt = `Generate a complete app2gold business guide for: ${userIdea}
 
-User's Project: ${userIdea}
-User's Name: ${userName}
-Full Project Description: ${fullProjectDescription}
-Additional Details: ${refinementText || 'No additional details provided'}
+User: ${userName}
+Description: ${fullProjectDescription}
+Refinements: ${refinementText || 'None'}
 
-Generate the complete guide using this EXACT template structure:
+Create exactly this structure:
 
-app2gold - Complete AI Guide Blueprint
-
-INSTRUCTIONS FOR YOU:
-1. Open Claude.ai (get the Pro plan for best results - it's $20/month and worth every penny for this project)
-2. Copy and Paste this message to Claude:
-"Hello Claude, I am building a digital app/product based on my expertise in ${userIdea.includes('teen') || userIdea.includes('child') ? 'behavioral psychology and technology' : '[fill based on user expertise]'}. I have a complete business guide that outlines my project, target market, and implementation strategy. Please help me bring this vision to life by providing step-by-step guidance, answering my questions, and helping me navigate the technical and business challenges ahead. I'm ready to work with you as my AI mentor to make this project successful."
+🎯 INSTRUCTIONS FOR YOU:
+1. Open Claude.ai (get Pro plan - $20/month recommended)
+2. Copy and Paste this message to Claude: "${userName === 'Francisco' ? 'Hello Claude, I am building a digital app/product based on my expertise in behavioral psychology and technology' : 'Hello Claude, I am building a digital app/product based on my expertise'}. I have a complete business guide that outlines my project, target market, and implementation strategy. Please help me bring this vision to life by providing step-by-step guidance, answering my questions, and helping me navigate the technical and business challenges ahead. I'm ready to work with you as my AI mentor to make this project successful."
 3. Attach this guide as a document (in Word, Notepad, or your preferred text editor) when you send the message.
 4. Send the message and Claude will become your dedicated AI business mentor
 5. Claude will: Help you refine your concept, choose the right no-code platform, create marketing strategies, solve technical problems, plan your launch, optimize for growth, and provide ongoing guidance throughout your journey
 
-About Claude.ai:
-Claude.ai serves as your always-available AI development mentor. Think of Claude as your expert consultant who knows business strategy, marketing, no-code development, and app creation. Claude can help you make smart decisions, avoid common mistakes, and accelerate your progress. With Claude's guidance, you'll have an experienced "business partner" available 24/7 to help you succeed.
+🤖 About Claude.ai:
+Claude.ai serves as your always-available AI development mentor. Think of Claude as your expert consultant who knows business strategy, marketing, no-code development, and app creation. Claude can help you make smart decisions, avoid common mistakes, and accelerate your progress. With Claude's guidance, you'll have an experienced business partner available 24/7 to help you succeed.
 
-YOUR PROJECT OVERVIEW
+📋 YOUR PROJECT OVERVIEW
 Date: ${new Date().toLocaleDateString()}
 Client: ${userName}
-Project Name: [Generate appropriate name based on user's idea]
+Project Name: ${userIdea.includes('TechBalance') ? 'TechBalance' : userIdea.split(' ').slice(0,2).join(' ')}
 Description: ${fullProjectDescription}
 
 Your Profile:
-• Expertise Area: [Based on user's input]
-• Specialization: [Based on user's input]
+• Expertise Area: ${userIdea.includes('teen') || userIdea.includes('child') ? 'Behavioral psychology and technology' : 'Industry expertise'}
+• Specialization: App development and user engagement
 • Computer System: Mac or Windows
 • Time Investment: Work at your own pace - evenings, weekends, or full-time
 • Budget Range: Choose from ultra-low ($0-50/month) to premium ($500+/month) options below
 
-BUDGET PLANNING & DEVELOPMENT OPTIONS
+💰 BUDGET PLANNING & DEVELOPMENT OPTIONS
 Ultra Low Budget ($0-$50/month): No-code platforms like Bubble.io (free tier), Glide (free tier), or AppSheet. Perfect for validating your concept and building a basic MVP.
 
 Low Budget ($50-$200/month): Premium no-code tools like Bubble.io Pro, Webflow, or Adalo Pro. Includes custom domains, more features, and professional styling options.
@@ -982,9 +985,9 @@ Higher Budget ($500+/month): Enterprise no-code solutions, custom development hy
 
 Recommended Starting Point: Begin with the Ultra Low Budget option to validate your concept, then scale up as you gain users and revenue.
 
-YOUR 6-STEP SUCCESS ROADMAP
+🚀 YOUR 6-STEP SUCCESS ROADMAP
 
-Stage 1: Conduct Market Research
+📊 Stage 1: Conduct Market Research
 What Claude will help you with:
 - Define your target audience personas with specific demographics and pain points
 - Analyze competitor apps and pricing strategies in your niche
@@ -992,7 +995,7 @@ What Claude will help you with:
 - Validate demand through surveys, interviews, or landing page tests
 - Research keywords and SEO opportunities for your app category
 
-Stage 2: Choose Your Development Platform
+🛠️ Stage 2: Choose Your Development Platform
 What Claude will help you with:
 - Compare no-code platforms based on your specific app requirements
 - Set up your chosen platform with optimal settings and configurations
@@ -1000,7 +1003,7 @@ What Claude will help you with:
 - Design wireframes and user interface mockups
 - Create a development timeline that fits your schedule and budget
 
-Stage 3: Build Your Minimum Viable Product (MVP)
+⚡ Stage 3: Build Your Minimum Viable Product (MVP)
 What Claude will help you with:
 - Prioritize essential features for your first version
 - Guide you through platform-specific tutorials and best practices
@@ -1008,7 +1011,7 @@ What Claude will help you with:
 - Optimize your app's performance and user experience
 - Implement basic analytics to track user behavior
 
-Stage 4: Test and Refine
+🧪 Stage 4: Test and Refine
 What Claude will help you with:
 - Design user testing protocols and feedback collection systems
 - Analyze user feedback and identify improvement priorities
@@ -1016,7 +1019,7 @@ What Claude will help you with:
 - Optimize conversion funnels and user onboarding
 - Prepare for scaling to handle more users
 
-Stage 5: Launch and Market
+🚀 Stage 5: Launch and Market
 What Claude will help you with:
 - Develop a comprehensive marketing strategy tailored to your audience
 - Create compelling app store listings and marketing materials
@@ -1024,7 +1027,7 @@ What Claude will help you with:
 - Set up analytics and tracking to measure marketing effectiveness
 - Implement customer acquisition and retention strategies
 
-Stage 6: Scale and Optimize
+📈 Stage 6: Scale and Optimize
 What Claude will help you with:
 - Analyze performance metrics and identify growth opportunities
 - Plan advanced features and product roadmap
@@ -1032,7 +1035,7 @@ What Claude will help you with:
 - Explore partnership and expansion opportunities
 - Develop systems for customer support and community building
 
-COMMON PITFALLS TO AVOID
+⚠️ COMMON PITFALLS TO AVOID
 1. Feature Creep: Don't add too many features at once. Start simple and add features based on user feedback.
 2. Perfectionism: Launch with a good MVP rather than waiting for perfection. You can improve based on real user data.
 3. Ignoring User Feedback: Your assumptions about what users want may be wrong. Listen to actual user needs and adapt.
@@ -1041,7 +1044,7 @@ COMMON PITFALLS TO AVOID
 6. Neglecting Analytics: Set up tracking early to understand user behavior and make data-driven decisions.
 7. Pricing Too Low: Value your work appropriately. It's easier to lower prices than to raise them later.
 
-SUCCESS TIMELINE (WORK AT YOUR PACE)
+⏰ SUCCESS TIMELINE (WORK AT YOUR PACE)
 Stage 1: Market research and validation
 Stage 2: Platform selection and setup
 Stage 3: MVP development and initial testing
@@ -1051,7 +1054,7 @@ Stage 6: Launch, marketing, and ongoing optimization
 
 Note: This timeline is flexible. Work at your own pace - some people complete this in 6 weeks, others take 6 months. The key is consistent progress.
 
-NEXT STEPS FOR SUCCESS
+✅ NEXT STEPS FOR SUCCESS
 Sample Questions to Ask Claude:
 - "Which no-code platform is best for my specific app idea?"
 - "How do I set up user authentication in [platform name]?"
@@ -1062,16 +1065,16 @@ Sample Questions to Ask Claude:
 - "What analytics should I track to measure success?"
 - "How do I optimize my app store listing for better visibility?"
 
-RESOURCES & TOOLS
+🔧 RESOURCES & TOOLS
 Free Development Tools: Figma (design), Bubble.io (no-code development), Google Analytics (tracking), Canva (graphics), Unsplash (images)
 
 Paid Tools Worth The Investment: Claude.ai Pro ($20/month), Bubble.io Pro ($29/month), ConvertKit (email marketing), Hotjar (user behavior analytics)
 
-Learning Resources: Bubble.io Academy, YouTube tutorials for your chosen platform, no-code community forums, product hunt for competitive research
+Learning Resources: Bubble.io Academy, YouTube tutorials for your chosen platform, no-code community forums, Product Hunt for competitive research
 
 Support Communities: No-code makers communities, Bubble.io forum, Indie Hackers, Product Hunt makers community
 
-POST-LAUNCH STRATEGY
+🎯 POST-LAUNCH STRATEGY
 1 Focus on user acquisition and feedback collection through targeted marketing and in-app feedback systems
 2 Implement user-requested features and improvements based on data and feedback analysis
 3 Scale marketing efforts and plan advanced features for version 2.0 of your app
@@ -1081,13 +1084,7 @@ POST-LAUNCH STRATEGY
 
 IMPORTANT: This guide is designed to work seamlessly with Claude.ai. Simply open Claude, paste the introduction message above, attach this guide, and start your journey. Claude will provide personalized guidance every step of the way.
 
-Remember: Success comes from taking action. Start with Stage 1 today and turn your vision into reality!
-
-IMPORTANT: 
-- Fill in all placeholders with project-specific information based on the user's input
-- Make this specific to their project while keeping the template structure completely intact
-- Ensure the guide is comprehensive and ready for immediate use with Claude.ai
-- Include the COMPLETE project description provided above in the PROJECT OVERVIEW section`;
+Remember: Success comes from taking action. Start with Stage 1 today and turn your vision into reality!`;
 
             setTimeout(async () => {
                 const finalGuide = await callOpenAIAPI(guidePrompt);
