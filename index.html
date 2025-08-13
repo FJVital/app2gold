@@ -273,24 +273,29 @@
             filter: brightness(0.95);
         }
         
-        /* Standardized text size - matches "Thanks for your purchase!" */
+        /* FIX 1: FONT STANDARDIZATION - All text standardized to 16px desktop/14px mobile */
         .text-standard {
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-            font-weight: 300;
-        }
-        
-        /* Larger text for progress steps */
-        .text-progress {
-            font-size: 1rem;
+            font-size: 1rem;           /* 16px desktop */
             line-height: 1.5rem;
             font-weight: 300;
         }
         
-        /* 50% reduced tagline for ALL pages */
+        .text-progress {
+            font-size: 1rem;           /* 16px desktop */
+            line-height: 1.5rem;
+            font-weight: 300;
+        }
+        
         .tagline-small {
-            font-size: 0.7rem;
-            line-height: 1rem;
+            font-size: 1rem;           /* 16px desktop - standardized */
+            line-height: 1.5rem;
+        }
+        
+        /* FIX 4: EMPHASIZE IMPORTANT MESSAGES - 150% size increase (24px desktop/21px mobile) */
+        .text-important {
+            font-size: 1.5rem;         /* 24px desktop - 150% of 16px */
+            line-height: 2rem;
+            font-weight: 700;          /* Bold for emphasis */
         }
         
         /* Responsive fixes */
@@ -308,19 +313,26 @@
                 font-size: 1.125rem;
             }
             
+            /* FIX 1: Mobile font standardization - 14px mobile */
             .text-standard {
-                font-size: 0.75rem;
-                line-height: 1.125rem;
+                font-size: 0.875rem;   /* 14px mobile */
+                line-height: 1.25rem;
             }
             
             .text-progress {
-                font-size: 0.875rem;
+                font-size: 0.875rem;   /* 14px mobile */
                 line-height: 1.25rem;
             }
             
             .tagline-small {
-                font-size: 0.6rem;
-                line-height: 0.875rem;
+                font-size: 0.875rem;   /* 14px mobile - standardized */
+                line-height: 1.25rem;
+            }
+            
+            /* FIX 4: Mobile important messages - 21px mobile (150% of 14px) */
+            .text-important {
+                font-size: 1.3125rem;  /* 21px mobile - 150% of 14px */
+                line-height: 1.75rem;
             }
         }
         
@@ -563,7 +575,7 @@
 
             <!-- Page 3: Main Idea Input -->
             <div id="agent-page-3" class="hidden agent-page">
-                <p class="text-center tagline-small font-light text-header-dark mb-6">Your App. Your Success.</p>
+                <!-- FIX 2: REMOVED DUPLICATE TAGLINE - was causing visual duplication -->
                 
                 <div class="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-8">
                     <!-- Main Content -->
@@ -592,8 +604,6 @@
 
             <!-- Page 4: Project Blueprint Display & Refinement -->
             <div id="agent-page-4" class="hidden space-y-6 agent-page">
-                <p class="text-center tagline-small font-light text-header-dark mb-6">Your App. Your Success.</p>
-                
                 <div class="space-y-4">
                     <h3 class="text-lg sm:text-xl font-bold text-header-dark">PROJECT BLUEPRINT</h3>
                     <p class="text-standard text-body-dark">
@@ -626,8 +636,6 @@
 
             <!-- Page 5: Final Guide Delivery -->
             <div id="agent-page-5" class="hidden space-y-6 agent-page">
-                <p class="text-center tagline-small font-light text-header-dark mb-6">Your App. Your Success.</p>
-                
                 <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center">YOUR PROJECT GUIDE</h2>
                 
                 <div class="space-y-4">
@@ -643,10 +651,10 @@
                             </button>
                         </div>
                         
-                        <!-- Warning with Yellow Triangle -->
+                        <!-- FIX 4: EMPHASIZED IMPORTANT MESSAGE - Warning with Yellow Triangle -->
                         <div class="flex items-start space-x-2">
                             <img src="./images/yellow_triangle.png" alt="Warning" class="h-12 w-12 mt-1 flex-shrink-0">
-                            <div class="text-standard text-green-600 font-bold">
+                            <div class="text-important text-green-600">
                                 Session Ending: Please copy your guide now! Your AI consultation session will end after you copy the guide.
                             </div>
                         </div>
@@ -671,9 +679,10 @@
                             </div>
                         </div>
                         
+                        <!-- FIX 4: EMPHASIZED IMPORTANT MESSAGE - Final completion message -->
                         <div id="session-complete-final" class="hidden">
                             <div class="p-3">
-                                <p class="text-standard text-green-800 font-bold">
+                                <p class="text-important text-green-800">
                                     Guide copied! Your session is now complete. Keep this guide safe - you won't be able to access this agent again.
                                 </p>
                             </div>
@@ -954,11 +963,14 @@
             refinementText = refinementInput.value.trim();
             showLoading('guide');
             
-            // OPTIMIZED SHORT PROMPT - Designed to fit token limits
+            // FIX 3: OPTIMIZED GUIDE GENERATION - Uses full agent description, removes generic templates
             const guidePrompt = `Create complete app2gold guide for: ${userIdea}
 
 User: ${userName}
-Description: ${fullProjectDescription}
+${refinementText ? `Refinements: ${refinementText}` : ''}
+
+FULL PROJECT DESCRIPTION TO USE:
+${fullProjectDescription}
 
 Generate EXACTLY this format with emojis:
 
@@ -978,12 +990,6 @@ Client: ${userName}
 Project Name: [Generate name from idea]
 Description: ${fullProjectDescription}
 
-Your Profile:
-• Expertise Area: [Based on user input]
-• Computer System: Mac or Windows
-• Time Investment: Work at your own pace
-• Budget Range: Choose from ultra-low ($0-50/month) to premium ($500+/month) options below
-
 💰 BUDGET PLANNING & DEVELOPMENT OPTIONS
 Ultra Low Budget ($0-$50/month): Bubble.io free tier, Glide, AppSheet. Perfect for validation.
 Low Budget ($50-$200/month): Bubble.io Pro, Webflow, Adalo Pro. Custom domains, more features.
@@ -991,7 +997,6 @@ Medium Budget ($200-$500/month): Bubble.io Professional, integrations, marketing
 Higher Budget ($500+/month): Enterprise solutions, custom development, professional design.
 
 🚀 YOUR 6-STEP SUCCESS ROADMAP
-
 📊 Stage 1: Market Research - Define audience, analyze competitors, validate demand
 🛠️ Stage 2: Platform Selection - Compare no-code platforms, set up, plan structure  
 ⚡ Stage 3: Build MVP - Prioritize features, develop, implement analytics
