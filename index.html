@@ -896,7 +896,7 @@
             formatted = formatted.replace(/\*\*/g, '');     // Remove **
             formatted = formatted.replace(/\*/g, '');       // Remove *
             
-            // Add emojis to sections
+            // FIX: Add single emojis only (prevent double emoji bug)
             formatted = formatted.replace(/INSTRUCTIONS FOR YOU:/g, '🎯 INSTRUCTIONS FOR YOU:');
             formatted = formatted.replace(/About Claude\.ai:/g, '🤖 About Claude.ai:');
             formatted = formatted.replace(/YOUR PROJECT OVERVIEW/g, '📋 YOUR PROJECT OVERVIEW');
@@ -913,6 +913,22 @@
             formatted = formatted.replace(/NEXT STEPS FOR SUCCESS/g, '✅ NEXT STEPS FOR SUCCESS');
             formatted = formatted.replace(/RESOURCES & TOOLS/g, '🔧 RESOURCES & TOOLS');
             formatted = formatted.replace(/POST-LAUNCH STRATEGY/g, '🎯 POST-LAUNCH STRATEGY');
+            
+            // Remove any double emojis that might have been created
+            formatted = formatted.replace(/🎯 🎯/g, '🎯');
+            formatted = formatted.replace(/🤖 🤖/g, '🤖');
+            formatted = formatted.replace(/📋 📋/g, '📋');
+            formatted = formatted.replace(/💰 💰/g, '💰');
+            formatted = formatted.replace(/🚀 🚀/g, '🚀');
+            formatted = formatted.replace(/📊 📊/g, '📊');
+            formatted = formatted.replace(/🛠️ 🛠️/g, '🛠️');
+            formatted = formatted.replace(/⚡ ⚡/g, '⚡');
+            formatted = formatted.replace(/🧪 🧪/g, '🧪');
+            formatted = formatted.replace(/📈 📈/g, '📈');
+            formatted = formatted.replace(/⚠️ ⚠️/g, '⚠️');
+            formatted = formatted.replace(/⏰ ⏰/g, '⏰');
+            formatted = formatted.replace(/✅ ✅/g, '✅');
+            formatted = formatted.replace(/🔧 🔧/g, '🔧');
             
             return formatted;
         }
@@ -976,13 +992,13 @@ Generate EXACTLY this format with emojis:
 
 🎯 INSTRUCTIONS FOR YOU:
 1. Open Claude.ai (get Pro plan - $20/month recommended)
-2. Copy and Paste this message to Claude: "Hello Claude, I am building a digital app/product based on my expertise. I have a complete business guide that outlines my project, target market, and implementation strategy. Please help me bring this vision to life by providing step-by-step guidance, answering my questions, and helping me navigate the technical and business challenges ahead. I'm ready to work with you as my AI mentor to make this project successful."
+2. Copy and Paste this message to Claude: "Hi Claude! I'm excited to work with you as my AI mentor. I have an app idea and created a business guide with all the details. I'm not super technical, but I'm ready to build something amazing. Can you help me figure out where to start and guide me through each step? I'd love your advice on the best approach for someone like me. Let's make this happen!"
 3. Attach this guide as a document (in Word, Notepad, or your preferred text editor) when you send the message.
-4. Send the message and Claude will become your dedicated AI business mentor
-5. Claude will: Help you refine your concept, choose the right no-code platform, create marketing strategies, solve technical problems, plan your launch, optimize for growth, and provide ongoing guidance throughout your journey
+4. Send the message and Claude will become your friendly AI business mentor
+5. Claude will: Ask about your current situation, recommend the best starting point for you, help you choose the right no-code platform, guide you through each stage, and provide encouragement along the way
 
 🤖 About Claude.ai:
-Claude.ai serves as your always-available AI development mentor. Think of Claude as your expert consultant who knows business strategy, marketing, no-code development, and app creation. Claude can help you make smart decisions, avoid common mistakes, and accelerate your progress. With Claude's guidance, you'll have an experienced business partner available 24/7 to help you succeed.
+Claude.ai is like having a patient, knowledgeable friend who's available 24/7 to help you build your app. Think of Claude as your encouraging mentor who breaks down complex stuff into simple steps. Claude knows about business, marketing, no-code tools, and app creation - but explains everything in plain English. Whether you're stuck on a decision, need motivation, or want to brainstorm solutions, Claude provides personalized guidance without the tech jargon. It's like having an experienced entrepreneur as your personal coach, ready to celebrate your wins and help you through challenges.
 
 📋 YOUR PROJECT OVERVIEW
 Date: ${new Date().toLocaleDateString()}
