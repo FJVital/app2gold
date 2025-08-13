@@ -280,6 +280,13 @@
             font-weight: 300;
         }
         
+        /* Larger text for progress steps */
+        .text-progress {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-weight: 300;
+        }
+        
         /* 50% reduced tagline for ALL pages */
         .tagline-small {
             font-size: 0.7rem;
@@ -304,6 +311,11 @@
             .text-standard {
                 font-size: 0.75rem;
                 line-height: 1.125rem;
+            }
+            
+            .text-progress {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
             }
             
             .tagline-small {
@@ -338,7 +350,7 @@
                 <!-- Logo - 30% size -->
                 <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto logo-hover">
             </div>
-            <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-header-dark headline leading-tight px-2">
+            <h1 class="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-header-dark headline leading-tight px-2">
                 Your App. Your Success.
             </h1>
             <hr class="border-[#DBDAD7]">
@@ -676,8 +688,8 @@
                     <img src="./images/star.png" alt="Processing" class="h-24 w-24 rotating-star">
                 </div>
                 <div id="loading-progress" class="space-y-2 max-w-md mx-auto">
-                    <div id="progress-text" class="text-standard text-body-dark font-medium"></div>
-                    <div id="progress-steps" class="text-left text-standard text-body-dark space-y-1"></div>
+                    <div id="progress-text" class="text-progress text-body-dark font-medium"></div>
+                    <div id="progress-steps" class="text-left text-progress text-body-dark space-y-1"></div>
                     <div class="flex items-start space-x-2 p-3 mt-4">
                         <img src="./images/yellow_triangle.png" alt="Warning" class="h-12 w-12 mt-1 flex-shrink-0">
                         <p class="text-standard text-yellow-800 font-medium">
@@ -942,18 +954,17 @@
             refinementText = refinementInput.value.trim();
             showLoading('guide');
             
-            // OPTIMIZED AI PROMPT - Structured for complete generation
-            const guidePrompt = `Generate a complete app2gold business guide for: ${userIdea}
+            // OPTIMIZED SHORT PROMPT - Designed to fit token limits
+            const guidePrompt = `Create complete app2gold guide for: ${userIdea}
 
 User: ${userName}
 Description: ${fullProjectDescription}
-Refinements: ${refinementText || 'None'}
 
-Create exactly this structure:
+Generate EXACTLY this format with emojis:
 
 🎯 INSTRUCTIONS FOR YOU:
 1. Open Claude.ai (get Pro plan - $20/month recommended)
-2. Copy and Paste this message to Claude: "${userName === 'Francisco' ? 'Hello Claude, I am building a digital app/product based on my expertise in behavioral psychology and technology' : 'Hello Claude, I am building a digital app/product based on my expertise'}. I have a complete business guide that outlines my project, target market, and implementation strategy. Please help me bring this vision to life by providing step-by-step guidance, answering my questions, and helping me navigate the technical and business challenges ahead. I'm ready to work with you as my AI mentor to make this project successful."
+2. Copy and Paste this message to Claude: "Hello Claude, I am building a digital app/product based on my expertise. I have a complete business guide that outlines my project, target market, and implementation strategy. Please help me bring this vision to life by providing step-by-step guidance, answering my questions, and helping me navigate the technical and business challenges ahead. I'm ready to work with you as my AI mentor to make this project successful."
 3. Attach this guide as a document (in Word, Notepad, or your preferred text editor) when you send the message.
 4. Send the message and Claude will become your dedicated AI business mentor
 5. Claude will: Help you refine your concept, choose the right no-code platform, create marketing strategies, solve technical problems, plan your launch, optimize for growth, and provide ongoing guidance throughout your journey
@@ -964,125 +975,67 @@ Claude.ai serves as your always-available AI development mentor. Think of Claude
 📋 YOUR PROJECT OVERVIEW
 Date: ${new Date().toLocaleDateString()}
 Client: ${userName}
-Project Name: ${userIdea.includes('TechBalance') ? 'TechBalance' : userIdea.split(' ').slice(0,2).join(' ')}
+Project Name: [Generate name from idea]
 Description: ${fullProjectDescription}
 
 Your Profile:
-• Expertise Area: ${userIdea.includes('teen') || userIdea.includes('child') ? 'Behavioral psychology and technology' : 'Industry expertise'}
-• Specialization: App development and user engagement
+• Expertise Area: [Based on user input]
 • Computer System: Mac or Windows
-• Time Investment: Work at your own pace - evenings, weekends, or full-time
+• Time Investment: Work at your own pace
 • Budget Range: Choose from ultra-low ($0-50/month) to premium ($500+/month) options below
 
 💰 BUDGET PLANNING & DEVELOPMENT OPTIONS
-Ultra Low Budget ($0-$50/month): No-code platforms like Bubble.io (free tier), Glide (free tier), or AppSheet. Perfect for validating your concept and building a basic MVP.
-
-Low Budget ($50-$200/month): Premium no-code tools like Bubble.io Pro, Webflow, or Adalo Pro. Includes custom domains, more features, and professional styling options.
-
-Medium Budget ($200-$500/month): Advanced no-code platforms like Bubble.io Professional, custom integrations, premium plugins, and marketing tools like ConvertKit or Mailchimp Pro.
-
-Higher Budget ($500+/month): Enterprise no-code solutions, custom development hybrid approach, professional design services, and comprehensive marketing automation.
-
-Recommended Starting Point: Begin with the Ultra Low Budget option to validate your concept, then scale up as you gain users and revenue.
+Ultra Low Budget ($0-$50/month): Bubble.io free tier, Glide, AppSheet. Perfect for validation.
+Low Budget ($50-$200/month): Bubble.io Pro, Webflow, Adalo Pro. Custom domains, more features.
+Medium Budget ($200-$500/month): Bubble.io Professional, integrations, marketing tools.
+Higher Budget ($500+/month): Enterprise solutions, custom development, professional design.
 
 🚀 YOUR 6-STEP SUCCESS ROADMAP
 
-📊 Stage 1: Conduct Market Research
-What Claude will help you with:
-- Define your target audience personas with specific demographics and pain points
-- Analyze competitor apps and pricing strategies in your niche
-- Identify market gaps and opportunities for differentiation
-- Validate demand through surveys, interviews, or landing page tests
-- Research keywords and SEO opportunities for your app category
-
-🛠️ Stage 2: Choose Your Development Platform
-What Claude will help you with:
-- Compare no-code platforms based on your specific app requirements
-- Set up your chosen platform with optimal settings and configurations
-- Plan your app's database structure and user flow
-- Design wireframes and user interface mockups
-- Create a development timeline that fits your schedule and budget
-
-⚡ Stage 3: Build Your Minimum Viable Product (MVP)
-What Claude will help you with:
-- Prioritize essential features for your first version
-- Guide you through platform-specific tutorials and best practices
-- Troubleshoot technical issues and platform limitations
-- Optimize your app's performance and user experience
-- Implement basic analytics to track user behavior
-
-🧪 Stage 4: Test and Refine
-What Claude will help you with:
-- Design user testing protocols and feedback collection systems
-- Analyze user feedback and identify improvement priorities
-- Plan and implement feature updates and bug fixes
-- Optimize conversion funnels and user onboarding
-- Prepare for scaling to handle more users
-
-🚀 Stage 5: Launch and Market
-What Claude will help you with:
-- Develop a comprehensive marketing strategy tailored to your audience
-- Create compelling app store listings and marketing materials
-- Plan social media campaigns and content marketing strategies
-- Set up analytics and tracking to measure marketing effectiveness
-- Implement customer acquisition and retention strategies
-
-📈 Stage 6: Scale and Optimize
-What Claude will help you with:
-- Analyze performance metrics and identify growth opportunities
-- Plan advanced features and product roadmap
-- Optimize for profitability and sustainable growth
-- Explore partnership and expansion opportunities
-- Develop systems for customer support and community building
+📊 Stage 1: Market Research - Define audience, analyze competitors, validate demand
+🛠️ Stage 2: Platform Selection - Compare no-code platforms, set up, plan structure  
+⚡ Stage 3: Build MVP - Prioritize features, develop, implement analytics
+🧪 Stage 4: Test & Refine - User testing, feedback analysis, optimize
+🚀 Stage 5: Launch & Market - Marketing strategy, app store, social media
+📈 Stage 6: Scale & Optimize - Growth metrics, advanced features, partnerships
 
 ⚠️ COMMON PITFALLS TO AVOID
-1. Feature Creep: Don't add too many features at once. Start simple and add features based on user feedback.
-2. Perfectionism: Launch with a good MVP rather than waiting for perfection. You can improve based on real user data.
-3. Ignoring User Feedback: Your assumptions about what users want may be wrong. Listen to actual user needs and adapt.
-4. Underestimating Marketing: Even the best app needs effective marketing. Plan for customer acquisition from day one.
-5. Platform Lock-in: Choose platforms that allow data export and avoid getting trapped with one provider.
-6. Neglecting Analytics: Set up tracking early to understand user behavior and make data-driven decisions.
-7. Pricing Too Low: Value your work appropriately. It's easier to lower prices than to raise them later.
+1. Feature Creep: Start simple, add based on feedback
+2. Perfectionism: Launch MVP, improve with real data
+3. Ignoring Feedback: Listen to actual user needs
+4. Underestimating Marketing: Plan acquisition from day one
+5. Pricing Too Low: Value your work appropriately
 
 ⏰ SUCCESS TIMELINE (WORK AT YOUR PACE)
 Stage 1: Market research and validation
-Stage 2: Platform selection and setup
-Stage 3: MVP development and initial testing
+Stage 2: Platform selection and setup  
+Stage 3: MVP development and testing
 Stage 4: Refinement based on feedback
-Stage 5: Launch preparation and marketing setup
-Stage 6: Launch, marketing, and ongoing optimization
-
-Note: This timeline is flexible. Work at your own pace - some people complete this in 6 weeks, others take 6 months. The key is consistent progress.
+Stage 5: Launch preparation and marketing
+Stage 6: Launch, marketing, and optimization
 
 ✅ NEXT STEPS FOR SUCCESS
-Sample Questions to Ask Claude:
-- "Which no-code platform is best for my specific app idea?"
-- "How do I set up user authentication in [platform name]?"
-- "What's the best way to price my app for [target audience]?"
-- "How can I validate my idea before building the full app?"
-- "What marketing strategies work best for apps like mine?"
-- "How do I handle customer support and feedback collection?"
-- "What analytics should I track to measure success?"
-- "How do I optimize my app store listing for better visibility?"
+Sample Questions for Claude:
+- "Which no-code platform is best for my app idea?"
+- "How do I validate my idea before building?"
+- "What marketing strategies work for apps like mine?"
+- "How do I optimize my app store listing?"
 
 🔧 RESOURCES & TOOLS
-Free Development Tools: Figma (design), Bubble.io (no-code development), Google Analytics (tracking), Canva (graphics), Unsplash (images)
-
-Paid Tools Worth The Investment: Claude.ai Pro ($20/month), Bubble.io Pro ($29/month), ConvertKit (email marketing), Hotjar (user behavior analytics)
-
-Learning Resources: Bubble.io Academy, YouTube tutorials for your chosen platform, no-code community forums, Product Hunt for competitive research
-
-Support Communities: No-code makers communities, Bubble.io forum, Indie Hackers, Product Hunt makers community
+Free: Figma, Bubble.io, Google Analytics, Canva, Unsplash
+Paid Worth Investment: Claude.ai Pro ($20/month), Bubble.io Pro ($29/month), ConvertKit, Hotjar
+Learning: Bubble.io Academy, YouTube tutorials, no-code forums, Product Hunt
+Communities: No-code makers, Bubble.io forum, Indie Hackers, Product Hunt
 
 🎯 POST-LAUNCH STRATEGY
-1 Focus on user acquisition and feedback collection through targeted marketing and in-app feedback systems
-2 Implement user-requested features and improvements based on data and feedback analysis
-3 Scale marketing efforts and plan advanced features for version 2.0 of your app
-4 Expand to new markets or create complementary products that serve your existing user base
+1 Focus on user acquisition and feedback collection through targeted marketing
+2 Implement user-requested features based on data analysis  
+3 Scale marketing efforts and plan advanced features for version 2.0
+4 Expand to new markets or create complementary products
 
 ---
 
-IMPORTANT: This guide is designed to work seamlessly with Claude.ai. Simply open Claude, paste the introduction message above, attach this guide, and start your journey. Claude will provide personalized guidance every step of the way.
+IMPORTANT: This guide works seamlessly with Claude.ai. Simply open Claude, paste the message above, attach this guide, and start your journey. Claude provides personalized guidance every step.
 
 Remember: Success comes from taking action. Start with Stage 1 today and turn your vision into reality!`;
 
