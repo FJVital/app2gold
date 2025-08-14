@@ -770,8 +770,14 @@
 
     <script>
         // Check for access and initialize the appropriate view
-        const urlParams = new URLSearchParams(window.location.search);
-        const hasAccess = urlParams.get('access') === 'true';
+        function checkAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const accessParam = urlParams.get('access');
+            console.log('Access parameter:', accessParam);
+            return accessParam === 'true';
+        }
+        
+        const hasAccess = checkAccess();
         
         // DOM elements
         const landingContent = document.getElementById('landing-content');
@@ -811,24 +817,46 @@
         const model = "gpt-4o-mini";
 
         // Initialize page based on access
-        if (hasAccess) {
-            // User has access - show agent flow
-            landingContent.classList.add('hidden');
-            agentFlowSection.classList.remove('hidden');
-            successBanner.classList.remove('hidden');
+        function initializePage() {
+            console.log('Initializing page...', 'hasAccess:', hasAccess);
             
-            // Auto-hide success banner after 5 seconds
-            setTimeout(() => {
-                successBanner.classList.add('hidden');
-            }, 5000);
-            
-            // Start with page 2 (user info collection)
-            showPage2();
-        } else {
-            // Regular landing page visitor
-            landingContent.classList.remove('hidden');
-            agentFlowSection.classList.add('hidden');
+            if (hasAccess) {
+                console.log('Access granted - showing agent flow');
+                // User has access - show agent flow
+                landingContent.classList.add('hidden');
+                agentFlowSection.classList.remove('hidden');
+                successBanner.classList.remove('hidden');
+                
+                // Auto-hide success banner after 5 seconds
+                setTimeout(() => {
+                    successBanner.classList.add('hidden');
+                }, 5000);
+                
+                // Start with page 2 (user info collection)
+                showPage2();
+            } else {
+                console.log('No access - showing landing page');
+                // Regular landing page visitor
+                landingContent.classList.remove('hidden');
+                agentFlowSection.classList.add('hidden');
+            }
         }
+        
+        // Run initialization
+        initializePage();
+        
+        // Also run after a short delay to catch any timing issues
+        setTimeout(initializePage, 100);
+        
+        // Backup: Check again when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking access again...');
+            const finalCheck = checkAccess();
+            if (finalCheck && !hasAccess) {
+                console.log('Final check found access, initializing...');
+                initializePage();
+            }
+        });
 
         // Page navigation functions
         function hideAllPages() {
