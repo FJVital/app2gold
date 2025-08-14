@@ -306,6 +306,31 @@
             display: none !important;
         }
         
+        /* More aggressive Gumroad removal */
+        .gumroad-button > * {
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        
+        /* Block all Gumroad overlays */
+        .gumroad-button::after {
+            content: none !important;
+            display: none !important;
+        }
+        
+        .gumroad-button:before {
+            content: none !important;
+            display: none !important;
+        }
+        
+        /* Override any Gumroad styling */
+        a[class*="gumroad"]::after,
+        a[class*="gumroad"]:hover::after,
+        .gumroad-button span,
+        .gumroad-button div {
+            display: none !important;
+        }
+        
         /* FIX 1: FONT STANDARDIZATION - All text standardized to 16px desktop/14px mobile */
         .text-standard {
             font-size: 1rem;           /* 16px desktop */
@@ -1118,6 +1143,37 @@ Remember: Success comes from taking action. Start with Stage 1 today and turn yo
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             console.log('Demo mode: Add ?access=true to URL to test post-purchase flow');
         }
+        
+        // Remove Gumroad overlay text completely
+        function removeGumroadOverlay() {
+            const gumroadButtons = document.querySelectorAll('.gumroad-button');
+            gumroadButtons.forEach(button => {
+                // Remove any child elements that might contain "gumroad" text
+                const children = button.querySelectorAll('*');
+                children.forEach(child => {
+                    if (child.textContent && child.textContent.toLowerCase().includes('gumroad')) {
+                        child.style.display = 'none';
+                    }
+                });
+                
+                // Remove any pseudo-elements by forcing content to none
+                button.style.setProperty('--after-content', 'none', 'important');
+                button.style.setProperty('--before-content', 'none', 'important');
+            });
+        }
+        
+        // Run immediately and after any DOM changes
+        removeGumroadOverlay();
+        setTimeout(removeGumroadOverlay, 100);
+        setTimeout(removeGumroadOverlay, 500);
+        setTimeout(removeGumroadOverlay, 1000);
+        
+        // Also run on hover
+        document.addEventListener('mouseover', function(e) {
+            if (e.target.closest('.gumroad-button')) {
+                removeGumroadOverlay();
+            }
+        });
     </script>
 </body>
 
