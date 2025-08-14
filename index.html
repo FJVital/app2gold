@@ -947,46 +947,46 @@ ${refinementText ? `Refinements: ${refinementText}` : ''}
 FULL PROJECT DESCRIPTION TO USE:
 ${fullProjectDescription}
 
-Generate EXACTLY this format with emojis:
+Generate EXACTLY this format:
 
-🎯 INSTRUCTIONS FOR YOU:
+INSTRUCTIONS FOR YOU:
 1. Open Claude.ai (get Pro plan - $20/month recommended)
 2. Copy and Paste this message to Claude: "Hi Claude! I'm excited to work with you as my AI mentor. I have an app idea and created a business guide with all the details. I'm not super technical, but I'm ready to build something amazing. Can you help me figure out where to start and guide me through each step? I'd love your advice on the best approach for someone like me. Let's make this happen!"
 3. Attach this guide as a document (in Word, Notepad, or your preferred text editor) when you send the message.
 4. Send the message and Claude will become your friendly AI business mentor
 5. Claude will: Ask about your current situation, recommend the best starting point for you, help you choose the right no-code platform, guide you through each stage, and provide encouragement along the way
 
-🤖 About Claude.ai:
+About Claude.ai:
 Claude.ai is like having a patient, knowledgeable friend who's available 24/7 to help you build your app. Think of Claude as your encouraging mentor who breaks down complex stuff into simple steps. Claude knows about business, marketing, no-code tools, and app creation - but explains everything in plain English. Whether you're stuck on a decision, need motivation, or want to brainstorm solutions, Claude provides personalized guidance without the tech jargon. It's like having an experienced entrepreneur as your personal coach, ready to celebrate your wins and help you through challenges.
 
-📋 YOUR PROJECT OVERVIEW
+YOUR PROJECT OVERVIEW
 Date: ${new Date().toLocaleDateString()}
 Client: ${userName}
 Project Name: [Generate name from idea]
 Description: ${fullProjectDescription}
 
-💰 BUDGET PLANNING & DEVELOPMENT OPTIONS
+BUDGET PLANNING & DEVELOPMENT OPTIONS
 Ultra Low Budget ($0-$50/month): Bubble.io free tier, Glide, AppSheet. Perfect for validation.
 Low Budget ($50-$200/month): Bubble.io Pro, Webflow, Adalo Pro. Custom domains, more features.
 Medium Budget ($200-$500/month): Bubble.io Professional, integrations, marketing tools.
 Higher Budget ($500+/month): Enterprise solutions, custom development, professional design.
 
-🚀 YOUR 6-STEP SUCCESS ROADMAP
-📊 Stage 1: Market Research - Define audience, analyze competitors, validate demand
-🛠️ Stage 2: Platform Selection - Compare no-code platforms, set up, plan structure  
-⚡ Stage 3: Build MVP - Prioritize features, develop, implement analytics
-🧪 Stage 4: Test & Refine - User testing, feedback analysis, optimize
-🚀 Stage 5: Launch & Market - Marketing strategy, app store, social media
-📈 Stage 6: Scale & Optimize - Growth metrics, advanced features, partnerships
+YOUR 6-STEP SUCCESS ROADMAP
+Stage 1: Market Research - Define audience, analyze competitors, validate demand
+Stage 2: Platform Selection - Compare no-code platforms, set up, plan structure  
+Stage 3: Build MVP - Prioritize features, develop, implement analytics
+Stage 4: Test & Refine - User testing, feedback analysis, optimize
+Stage 5: Launch & Market - Marketing strategy, app store, social media
+Stage 6: Scale & Optimize - Growth metrics, advanced features, partnerships
 
-⚠️ COMMON PITFALLS TO AVOID
+COMMON PITFALLS TO AVOID
 1. Feature Creep: Start simple, add based on feedback
 2. Perfectionism: Launch MVP, improve with real data
 3. Ignoring Feedback: Listen to actual user needs
 4. Underestimating Marketing: Plan acquisition from day one
 5. Pricing Too Low: Value your work appropriately
 
-⏰ SUCCESS TIMELINE (WORK AT YOUR PACE)
+SUCCESS TIMELINE (WORK AT YOUR PACE)
 Stage 1: Market research and validation
 Stage 2: Platform selection and setup  
 Stage 3: MVP development and testing
@@ -994,20 +994,20 @@ Stage 4: Refinement based on feedback
 Stage 5: Launch preparation and marketing
 Stage 6: Launch, marketing, and optimization
 
-✅ NEXT STEPS FOR SUCCESS
+NEXT STEPS FOR SUCCESS
 Sample Questions for Claude:
 - "Which no-code platform is best for my app idea?"
 - "How do I validate my idea before building?"
 - "What marketing strategies work for apps like mine?"
 - "How do I optimize my app store listing?"
 
-🔧 RESOURCES & TOOLS
+RESOURCES & TOOLS
 Free: Figma, Bubble.io, Google Analytics, Canva, Unsplash
 Paid Worth Investment: Claude.ai Pro ($20/month), Bubble.io Pro ($29/month), ConvertKit, Hotjar
 Learning: Bubble.io Academy, YouTube tutorials, no-code forums, Product Hunt
 Communities: No-code makers, Bubble.io forum, Indie Hackers, Product Hunt
 
-🎯 POST-LAUNCH STRATEGY
+POST-LAUNCH STRATEGY
 1 Focus on user acquisition and feedback collection through targeted marketing
 2 Implement user-requested features based on data analysis  
 3 Scale marketing efforts and plan advanced features for version 2.0
@@ -1111,7 +1111,7 @@ Remember: Success comes from taking action. Start with Stage 1 today and turn yo
                             'Analyzing market opportunities for your concept...',
                             'Creating your personalized project blueprint...',
                             'Building your strategic foundation...',
-                            'Finalizing your complete product description blueprint...'
+                            'Finalizing your complete Guide blueprint...'
                         ], 60);
                     } else if (type === 'guide') {
                         progressText.textContent = 'AI Agent is crafting your comprehensive guide, please be patient this will take about 5 minutes......';
@@ -1211,29 +1211,14 @@ Remember: Success comes from taking action. Start with Stage 1 today and turn yo
             }
         }
         
-        // Format guide content
+        // Format guide content - NO EMOJIS
         function formatGuideContent(content) {
+            // Remove markdown symbols only
             let formatted = content.replace(/#+\s?/g, '');
             formatted = formatted.replace(/\*\*/g, '');
             formatted = formatted.replace(/\*/g, '');
             
-            formatted = formatted.replace(/INSTRUCTIONS FOR YOU:/g, '🎯 INSTRUCTIONS FOR YOU:');
-            formatted = formatted.replace(/About Claude\.ai:/g, '🤖 About Claude.ai:');
-            formatted = formatted.replace(/YOUR PROJECT OVERVIEW/g, '📋 YOUR PROJECT OVERVIEW');
-            formatted = formatted.replace(/BUDGET PLANNING & DEVELOPMENT OPTIONS/g, '💰 BUDGET PLANNING & DEVELOPMENT OPTIONS');
-            formatted = formatted.replace(/YOUR 6-STEP SUCCESS ROADMAP/g, '🚀 YOUR 6-STEP SUCCESS ROADMAP');
-            formatted = formatted.replace(/Stage 1:/g, '📊 Stage 1:');
-            formatted = formatted.replace(/Stage 2:/g, '🛠️ Stage 2:');
-            formatted = formatted.replace(/Stage 3:/g, '⚡ Stage 3:');
-            formatted = formatted.replace(/Stage 4:/g, '🧪 Stage 4:');
-            formatted = formatted.replace(/Stage 5:/g, '🚀 Stage 5:');
-            formatted = formatted.replace(/Stage 6:/g, '📈 Stage 6:');
-            formatted = formatted.replace(/COMMON PITFALLS TO AVOID/g, '⚠️ COMMON PITFALLS TO AVOID');
-            formatted = formatted.replace(/SUCCESS TIMELINE/g, '⏰ SUCCESS TIMELINE');
-            formatted = formatted.replace(/NEXT STEPS FOR SUCCESS/g, '✅ NEXT STEPS FOR SUCCESS');
-            formatted = formatted.replace(/RESOURCES & TOOLS/g, '🔧 RESOURCES & TOOLS');
-            formatted = formatted.replace(/POST-LAUNCH STRATEGY/g, '🎯 POST-LAUNCH STRATEGY');
-            
+            // NO emoji additions - keep content clean
             return formatted;
         }
         
