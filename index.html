@@ -257,47 +257,53 @@
             padding-left: 1.5rem;
         }
         
-        /* Gold button styling - No hover effects */
+        /* Gold button styling - Simple clean hover */
         .gold-button {
-            transition: none !important;
-            filter: none !important;
-            box-shadow: none !important;
-            transform: none !important;
+            transition: all 0.2s ease;
+            transform: scale(1);
+            opacity: 1;
         }
         
         .gold-button:hover {
-            filter: none !important;
-            transform: none !important;
-            box-shadow: none !important;
+            transform: scale(1.05);
+            opacity: 0.9;
         }
         
         .gold-button:active {
-            transform: none !important;
-            filter: none !important;
+            transform: scale(0.98);
+            opacity: 0.8;
         }
         
-        /* Remove Gumroad overlay text */
-        .gumroad-button:hover::after {
-            display: none !important;
-        }
-        
+        /* Completely remove ALL Gumroad overlay effects */
+        .gumroad-button::before,
         .gumroad-button::after {
             display: none !important;
+            content: none !important;
         }
         
-        /* Disable all Gumroad JS effects */
-        .gumroad-button:hover {
-            background: none !important;
-            box-shadow: none !important;
-            transform: none !important;
+        .gumroad-button:hover::before,
+        .gumroad-button:hover::after {
+            display: none !important;
+            content: none !important;
         }
         
         .gumroad-button {
             position: relative !important;
+            background: none !important;
+            border: none !important;
         }
         
-        .gumroad-button * {
-            pointer-events: auto !important;
+        .gumroad-button:hover {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Hide any gumroad text overlays */
+        .gumroad-button [class*="overlay"],
+        .gumroad-button [class*="text"],
+        .gumroad-button .gumroad-overlay {
+            display: none !important;
         }
         
         /* FIX 1: FONT STANDARDIZATION - All text standardized to 16px desktop/14px mobile */
