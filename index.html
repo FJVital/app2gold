@@ -257,20 +257,47 @@
             padding-left: 1.5rem;
         }
         
-        /* Gold button styling */
+        /* Gold button styling - No hover effects */
         .gold-button {
-            transition: all 0.3s ease;
-            filter: brightness(1);
+            transition: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            transform: none !important;
         }
         
         .gold-button:hover {
-            filter: brightness(1.1);
-            transform: translateY(-2px);
+            filter: none !important;
+            transform: none !important;
+            box-shadow: none !important;
         }
         
         .gold-button:active {
-            transform: translateY(0);
-            filter: brightness(0.95);
+            transform: none !important;
+            filter: none !important;
+        }
+        
+        /* Remove Gumroad overlay text */
+        .gumroad-button:hover::after {
+            display: none !important;
+        }
+        
+        .gumroad-button::after {
+            display: none !important;
+        }
+        
+        /* Disable all Gumroad JS effects */
+        .gumroad-button:hover {
+            background: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        .gumroad-button {
+            position: relative !important;
+        }
+        
+        .gumroad-button * {
+            pointer-events: auto !important;
         }
         
         /* FIX 1: FONT STANDARDIZATION - All text standardized to 16px desktop/14px mobile */
@@ -514,8 +541,8 @@
                     <!-- Gumroad Buy Button -->
                     <div class="flex justify-center pt-4">
                         <script src="https://gumroad.com/js/gumroad.js"></script>
-                        <a class="gumroad-button border-0" href="https://vitality63.gumroad.com/l/ixmmge/checkout" target="_blank" data-gumroad-single-product="true" style="border: none; background: none; padding: 0;">
-                            <img src="./images/turn_my_idea.png" alt="Turn My Idea Into Gold" class="h-12 sm:h-14 md:h-16 w-auto cursor-pointer gold-button" style="border: none; background: none;">
+                        <a class="gumroad-button border-0" href="https://vitality63.gumroad.com/l/ixmmge?wanted=true" target="_blank" data-gumroad-single-product="true" style="border: none; background: none; padding: 0; display: block;">
+                            <img src="./images/turn_my_idea.png" alt="Turn My Idea Into Gold" class="h-12 sm:h-14 md:h-16 w-auto cursor-pointer gold-button" style="border: none; background: none; display: block;">
                         </a>
                     </div>
                     
