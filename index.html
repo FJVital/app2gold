@@ -805,7 +805,7 @@
                 agent.style.display = 'block';
                 agent.classList.remove('hidden');
                 
-                // Show banner
+                // Show banner (will be hidden when moving to page 3)
                 banner.style.display = 'block';
                 banner.classList.remove('hidden');
                 
@@ -1063,11 +1063,19 @@ Remember: Success comes from taking action. Start with Stage 1 today and turn yo
         }
         
         function showPage3() {
+            // Hide the welcome banner when moving to page 3
+            const banner = document.getElementById('success-banner');
+            if (banner) {
+                banner.style.display = 'none';
+                banner.classList.add('hidden');
+            }
+            
             hideAllPages();
             const page3 = document.getElementById('agent-page-3');
             if (page3) {
                 page3.classList.remove('hidden');
             }
+            console.log('📄 Moving to page 3 - Banner hidden');
         }
         
         function showPage4() {
@@ -1086,7 +1094,7 @@ Remember: Success comes from taking action. Start with Stage 1 today and turn yo
             }
         }
         
-        // Loading functions
+        // Loading functions with step-by-step progress
         function showLoading(type) {
             hideAllPages();
             const loading = document.getElementById('loading-indicator');
@@ -1097,11 +1105,28 @@ Remember: Success comes from taking action. Start with Stage 1 today and turn yo
                 if (progressText) {
                     if (type === 'blueprint') {
                         progressText.textContent = 'AI Agent is analyzing your idea...';
+                        // Show 5 steps over 1 minute (12 seconds each)
+                        updateProgressSteps([
+                            'Processing your unique idea and experience...',
+                            'Analyzing market opportunities for your concept...',
+                            'Creating your personalized project blueprint...',
+                            'Building your strategic foundation...',
+                            'Finalizing your complete Guide blueprint...'
+                        ], 60);
                     } else if (type === 'guide') {
                         progressText.textContent = 'AI Agent is crafting your comprehensive guide, please be patient this will take about 5 minutes......';
+                        // Show 5 steps over 5 minutes (60 seconds each)
+                        updateProgressSteps([
+                            'Conducting market research analysis...',
+                            'Developing your monetization strategy...',
+                            'Creating your step-by-step roadmap...',
+                            'Optimizing your business blueprint...',
+                            'Finalizing your complete Guide blueprint...'
+                        ], 300);
                     }
                 }
             }
+            console.log('⏳ Loading with steps started:', type);
         }
         
         function hideLoading() {
@@ -1109,6 +1134,49 @@ Remember: Success comes from taking action. Start with Stage 1 today and turn yo
             if (loading) {
                 loading.classList.add('hidden');
             }
+        }
+        
+        // FIXED: Progress steps display function
+        function updateProgressSteps(steps, totalSeconds) {
+            const progressSteps = document.getElementById('progress-steps');
+            if (!progressSteps) {
+                console.log('❌ Progress steps element not found');
+                return;
+            }
+            
+            let currentStep = 0;
+            const stepInterval = (totalSeconds * 1000) / steps.length; // Convert to milliseconds
+            
+            console.log(`📊 Starting progress: ${steps.length} steps over ${totalSeconds} seconds`);
+            
+            function showNextStep() {
+                if (currentStep < steps.length) {
+                    // Clear previous steps
+                    progressSteps.innerHTML = '';
+                    
+                    // Show all steps up to current one
+                    for (let i = 0; i <= currentStep; i++) {
+                        const stepDiv = document.createElement('div');
+                        stepDiv.className = 'progress-item';
+                        stepDiv.innerHTML = `
+                            <span class="progress-check">✓</span>
+                            <span>${steps[i]}</span>
+                        `;
+                        progressSteps.appendChild(stepDiv);
+                    }
+                    
+                    console.log(`✅ Step ${currentStep + 1}/${steps.length}: ${steps[currentStep]}`);
+                    currentStep++;
+                    
+                    // Schedule next step
+                    if (currentStep < steps.length) {
+                        setTimeout(showNextStep, stepInterval);
+                    }
+                }
+            }
+            
+            // Start immediately with first step
+            showNextStep();
         }
         
         // API call
