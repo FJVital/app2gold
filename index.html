@@ -356,6 +356,23 @@
             font-weight: 700;          /* Bold for emphasis */
         }
         
+        /* Footer styling */
+        .footer-line {
+            border-top: 2px solid rgb(104, 99, 81);
+        }
+        
+        .footer-text {
+            color: rgb(104, 99, 81);
+        }
+        
+        .footer-instagram {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-instagram:hover {
+            transform: scale(1.05);
+        }
+        
         /* Responsive fixes */
         @media (max-width: 640px) {
             .testimonial-card:hover {
@@ -391,6 +408,13 @@
             .text-important {
                 font-size: 1.3125rem;  /* 21px mobile - 150% of 14px */
                 line-height: 1.75rem;
+            }
+            
+            /* Mobile footer adjustments */
+            .footer-mobile {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
             }
         }
         
@@ -549,6 +573,7 @@
                             <ul class="text-left list-disc list-inside space-y-1 text-sm sm:text-base font-light text-body-dark">
                                 <li>Custom market research for your idea</li>
                                 <li>Ready-to-use business blueprint</li>
+                                <li>No-code platform recommendations and guidance</li>
                             </ul>
                         </div>
                     </div>
@@ -582,6 +607,29 @@
                     </p>
                 </div>
             </section>
+
+            <!-- Footer Section -->
+            <footer class="footer-line pt-6 mt-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center footer-mobile gap-4">
+                    <!-- Copyright -->
+                    <div class="footer-text text-sm sm:text-base font-light">
+                        © 2025 app2.gold All Rights Reserved.
+                    </div>
+                    
+                    <!-- Instagram -->
+                    <div class="flex items-center space-x-2">
+                        <a href="https://www.instagram.com/app2.gold/" target="_blank" class="footer-instagram flex items-center space-x-2">
+                            <img src="./images/instagram-icon.png" alt="Instagram" class="h-6 w-6">
+                            <span class="footer-text text-sm sm:text-base font-light">app2.gold</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Contact Email -->
+                    <div class="footer-text text-sm sm:text-base font-light">
+                        <a href="mailto:contact@app2.gold" class="footer-text hover:underline">contact@app2.gold</a>
+                    </div>
+                </div>
+            </footer>
         </div>
 
         <!-- Agent Flow Container - Shown when access=true -->
@@ -633,8 +681,6 @@
 
             <!-- Page 3: Main Idea Input -->
             <div id="agent-page-3" class="hidden agent-page">
-                <!-- FIX 2: REMOVED DUPLICATE TAGLINE - was causing visual duplication -->
-                
                 <div class="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-8">
                     <!-- Main Content -->
                     <div class="flex-1 space-y-4">
@@ -1121,7 +1167,9 @@ POST-LAUNCH STRATEGY
 
 IMPORTANT: This guide works seamlessly with Claude.ai. Simply open Claude, paste the message above, attach this guide, and start your journey. Claude provides personalized guidance every step.
 
-Remember: Success comes from taking action. Start with Stage 1 today and turn your vision into reality!`;
+Remember: Success comes from taking action. Start with Stage 1 today and turn your vision into reality!
+
+© 2025 app2.gold All Rights Reserved.    contact@app2.gold`;
 
                     setTimeout(async () => {
                         const finalGuide = await callOpenAIAPI(guidePrompt);
