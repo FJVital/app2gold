@@ -165,10 +165,9 @@
             animation: rotate 2s linear infinite;
         }
         
-        /* Header sections */
+        /* Header sections with colors */
         .header-section {
             background-color: #EDEAEA;
-            color: #5E5A49;
             padding: 1rem;
             text-align: center;
             transition: all 0.3s ease;
@@ -178,11 +177,30 @@
         }
         .header-section h2 {
             margin: 0;
-            color: #5E5A49;
             font-size: 1.5rem;
         }
         .header-section p, .header-section li {
             text-align: left;
+        }
+        
+        /* Color scheme for headers */
+        .header-orange h2 {
+            color: #FF6633;
+        }
+        .header-pink h2 {
+            color: #FF3399;
+        }
+        .header-green h2 {
+            color: #73BC45;
+        }
+        .header-blue h2 {
+            color: #3DBCED;
+        }
+        .header-purple h2 {
+            color: #A64F9E;
+        }
+        .header-dark-blue h2 {
+            color: #4174B9;
         }
         
         /* Robot image styling */
@@ -373,6 +391,46 @@
             transform: scale(1.05);
         }
         
+        /* FAQ Styles */
+        .faq-item {
+            border-bottom: 2px solid #DBDAD7;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(237, 234, 234, 0.3);
+            padding-left: 1rem;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1rem;
+        }
+        
+        .faq-answer.open {
+            max-height: 500px;
+            padding: 1rem;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-icon.rotate {
+            transform: rotate(180deg);
+        }
+        
         /* Responsive fixes */
         @media (max-width: 640px) {
             .testimonial-card:hover {
@@ -444,7 +502,7 @@
                 <!-- Logo - Increased to 180% -->
                 <img src="./images/logo_app2gold.jpg" alt="app2gold Logo" class="h-14 sm:h-16 md:h-20 lg:h-24 w-auto logo-hover">
             </div>
-            <h1 class="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-header-dark headline leading-tight px-2">
+            <h1 class="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold headline leading-tight px-2" style="color: #FF6633;">
                 Your App. Your Success.
             </h1>
             <hr class="border-[#DBDAD7]">
@@ -454,7 +512,7 @@
         <div id="landing-content">
             <!-- The Problem We Solve -->
             <section class="space-y-3 md:space-y-4">
-                <div class="header-section">
+                <div class="header-section header-pink">
                     <h2 class="text-lg sm:text-xl md:text-2xl font-bold">The Problem We Solve</h2>
                 </div>
                 <div class="space-y-3 md:space-y-4 font-light text-body-dark text-left p-3 md:p-4">
@@ -471,7 +529,7 @@
 
             <!-- Your App, Secured and Built -->
             <section class="space-y-3 md:space-y-4">
-                <div class="header-section">
+                <div class="header-section header-green">
                     <h2 class="text-lg sm:text-xl md:text-2xl font-bold">Your App, Secured and Built</h2>
                 </div>
                 <div class="space-y-3 md:space-y-4 font-light text-body-dark text-left p-3 md:p-4">
@@ -487,7 +545,7 @@
 
             <!-- Your Path to Launch -->
             <section class="space-y-3 md:space-y-4">
-                <div class="header-section">
+                <div class="header-section header-blue">
                     <h2 class="text-lg sm:text-xl md:text-2xl font-bold">Your Path to Launch</h2>
                 </div>
                 <div class="space-y-3 md:space-y-4 font-light text-body-dark text-left p-3 md:p-4">
@@ -510,7 +568,7 @@
 
             <!-- Final call to action -->
             <section class="text-center space-y-3 md:space-y-4">
-                <div class="header-section">
+                <div class="header-section header-purple">
                     <h2 class="text-lg sm:text-xl md:text-2xl font-bold">Don't Let Your Million-Dollar Idea Die</h2>
                 </div>
                 <div class="px-4">
@@ -526,7 +584,7 @@
             
             <!-- Testimonials Section -->
             <section id="testimonials" class="space-y-6 md:space-y-8 mt-6 md:mt-8">
-                <div class="header-section">
+                <div class="header-section header-pink">
                     <h2 class="text-lg sm:text-xl md:text-2xl font-bold">What Our Customers Say</h2>
                 </div>
                 <div class="space-y-3 md:space-y-4 p-3 md:p-4 text-left">
@@ -553,26 +611,127 @@
                 <hr class="border-[#DBDAD7]">
             </section>
 
+            <!-- FAQ Section -->
+            <section id="faq" class="space-y-6 md:space-y-8">
+                <div class="header-section header-orange">
+                    <h2 class="text-lg sm:text-xl md:text-2xl font-bold">Frequently Asked Questions</h2>
+                </div>
+                <div class="space-y-2 p-3 md:p-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(1)">
+                            <span class="font-bold text-body-dark">Will this really work for my specific idea?</span>
+                            <i id="faq-icon-1" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-1" class="faq-answer">
+                            <p class="text-body-dark font-light">Absolutely. Our AI agent works with ANY expertise or idea - from fitness apps to business tools to creative platforms. Whether you're a teacher, consultant, chef, or have a completely unique concept, the process adapts to your specific knowledge and market. We've successfully guided entrepreneurs across 50+ different industries.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(2)">
+                            <span class="font-bold text-body-dark">Why spend $99 when I can use ChatGPT for free?</span>
+                            <i id="faq-icon-2" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-2" class="faq-answer">
+                            <p class="text-body-dark font-light">ChatGPT gives generic advice. Our specialized AI agent conducts a structured, 5-page consultation specifically designed for app development - like having a business consultant who knows exactly what questions to ask. You get market analysis, monetization strategy, competitive positioning, and a complete implementation roadmap tailored to YOUR idea. Plus, your guide works seamlessly with Claude.ai for ongoing development support.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(3)">
+                            <span class="font-bold text-body-dark">I'm not tech-savvy. Will I actually be able to build an app?</span>
+                            <i id="faq-icon-3" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-3" class="faq-answer">
+                            <p class="text-body-dark font-light">That's exactly who we built this for! Our customers include teachers, consultants, and retirees with zero technical background. The guide includes step-by-step instructions for no-code platforms that require no programming - just point, click, and build. If you can use a computer, you can build your app.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(4)">
+                            <span class="font-bold text-body-dark">What exactly do I get for $99?</span>
+                            <i id="faq-icon-4" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-4" class="faq-answer">
+                            <p class="text-body-dark font-light">You get a complete, personalized business guide (1-2 pages) including 5 key steps: market analysis for your idea, platform selection guidance, monetization strategies, implementation roadmap, and post-launch optimization. Plus lifetime access to your guide and clear instructions for continuing with Claude.ai as your ongoing mentor.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(5)">
+                            <span class="font-bold text-body-dark">How long does it take to get my guide?</span>
+                            <i id="faq-icon-5" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-5" class="faq-answer">
+                            <p class="text-body-dark font-light">Your complete guide is delivered in under 10 minutes through our 5-step process: (1) Share your expertise, (2) AI creates your project blueprint, (3) You refine details, (4) AI generates your complete guide, (5) You receive your personalized roadmap. The entire consultation takes 5-7 minutes, then you get instant access to your customized business plan.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(6)">
+                            <span class="font-bold text-body-dark">What if my idea doesn't work or I'm not satisfied?</span>
+                            <i id="faq-icon-6" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-6" class="faq-answer">
+                            <p class="text-body-dark font-light">We're so confident in our process that we offer a 15-day money-back guarantee. If your guide doesn't provide clear, actionable steps for your specific idea, we'll refund your purchase completely. But don't give up on your dream - this is your opportunity to reach your goal. Every time we step outside our comfort zone, we feel overwhelmed. Remember how intimidating your first computer seemed? Now you use it effortlessly. Building your app will feel the same way - challenging at first, then empowering once you start.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(7)">
+                            <span class="font-bold text-body-dark">Do I need to have a fully formed idea to start?</span>
+                            <i id="faq-icon-7" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-7" class="faq-answer">
+                            <p class="text-body-dark font-light">Not at all! Many customers start with just expertise in their field or a vague concept. Our AI agent helps you discover and refine your idea based on your knowledge and interests. Sometimes the best apps come from solving problems you face every day.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 8 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(8)">
+                            <span class="font-bold text-body-dark">Is there ongoing support after I get my guide?</span>
+                            <i id="faq-icon-8" class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div id="faq-answer-8" class="faq-answer">
+                            <p class="text-body-dark font-light">Your guide includes detailed instructions for continuing with Claude.ai as your ongoing mentor, plus you can always email contact@app2.gold for assistance. The guide is designed to be your complete reference throughout your entire app development journey.</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-6">
+                        <p class="text-body-dark font-light">Still have questions? Email <a href="mailto:contact@app2.gold" class="font-bold hover:underline">contact@app2.gold</a></p>
+                    </div>
+                </div>
+                <hr class="border-[#DBDAD7]">
+            </section>
+
             <!-- Gumroad Purchase Section -->
             <section id="purchase-section" class="space-y-4 md:space-y-6">
-                <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark text-center px-4">
-                    Get Your Complete App Blueprint
-                </h2>
+                <div class="header-section header-dark-blue">
+                    <h2 class="text-lg sm:text-xl md:text-2xl font-bold">What You Get:</h2>
+                </div>
                 <div class="text-center space-y-4 px-2 md:px-0">
                     <p class="text-sm sm:text-base md:text-medium text-body-dark font-light max-w-2xl mx-auto">
                         Ready to turn your expertise into a profitable app? Get instant access to our AI agent and receive your complete business guide.
                     </p>
                     <div class="bg-custom-gray p-4 md:p-6 rounded-none space-y-3">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark">What You Get:</h3>
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-header-dark">What You Get - 5 Essential Steps:</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <ul class="text-left list-disc list-inside space-y-1 text-sm sm:text-base font-light text-body-dark">
-                                <li>Personalized AI agent consultation</li>
-                                <li>Complete implementation roadmap</li>
-                                <li>Lifetime access to your guide</li>
+                                <li>Personalized market analysis for your specific idea</li>
+                                <li>Platform recommendations and setup guidance</li>
+                                <li>Custom monetization strategy</li>
                             </ul>
                             <ul class="text-left list-disc list-inside space-y-1 text-sm sm:text-base font-light text-body-dark">
-                                <li>Custom market research for your idea</li>
-                                <li>Ready-to-use business blueprint</li>
+                                <li>Complete implementation roadmap</li>
+                                <li>Post-launch optimization plan</li>
                                 <li>No-code platform recommendations and guidance</li>
                             </ul>
                         </div>
@@ -592,6 +751,11 @@
                         <p><span class="font-bold">4. No Commitment Anxiety</span> — No risk of forgetting to cancel a subscription or being locked into a long-term contract.</p>
                         <p><span class="font-bold">5. Peace of Mind</span> — You don't have to budget for future payments or worry about price increases.</p>
                         <p><span class="font-bold">6. Fewer Administrative Hassles</span> — No need to update payment methods, handle monthly invoices, or deal with failed payment alerts.</p>
+                    </div>
+                    
+                    <!-- Call to Action Text -->
+                    <div class="text-center space-y-2 px-4">
+                        <p class="text-lg sm:text-xl font-bold text-body-dark">Get your complete app blueprint and escape the $5,000 developer trap and investor gatekeepers forever - click button below.</p>
                     </div>
                     
                     <!-- Gumroad Buy Button -->
@@ -818,6 +982,31 @@
         console.log('🚀 STARTING app2gold...');
         console.log('URL:', window.location.href);
         console.log('Search:', window.location.search);
+        
+        // FAQ Toggle Function
+        function toggleFAQ(num) {
+            const answer = document.getElementById(`faq-answer-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.classList.remove('rotate');
+            } else {
+                // Close all other FAQs
+                for (let i = 1; i <= 8; i++) {
+                    const otherAnswer = document.getElementById(`faq-answer-${i}`);
+                    const otherIcon = document.getElementById(`faq-icon-${i}`);
+                    if (otherAnswer && otherIcon) {
+                        otherAnswer.classList.remove('open');
+                        otherIcon.classList.remove('rotate');
+                    }
+                }
+                
+                // Open the clicked FAQ
+                answer.classList.add('open');
+                icon.classList.add('rotate');
+            }
+        }
         
         // SIMPLE AND DIRECT ACCESS CHECK - No complex functions
         function checkForAccess() {
