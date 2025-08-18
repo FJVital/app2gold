@@ -7,7 +7,7 @@
     <!-- Inter font and a fallback sans-serif font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN for a clean, modern framework -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for icons -->
@@ -292,60 +292,26 @@
             opacity: 0.8;
         }
         
-        /* Completely remove ALL Gumroad overlay effects */
-        .gumroad-button::before,
-        .gumroad-button::after {
+        /* Block all Gumroad overlay text and hover effects */
+        a[href*="gumroad.com"]::after,
+        a[href*="gumroad.com"]:hover::after,
+        a[href*="gumroad.com"]::before,
+        a[href*="gumroad.com"]:hover::before {
             display: none !important;
             content: none !important;
         }
-        
-        .gumroad-button:hover::before,
-        .gumroad-button:hover::after {
-            display: none !important;
-            content: none !important;
-        }
-        
-        .gumroad-button {
+
+        /* Remove any tooltip or overlay text */
+        a[href*="gumroad.com"] {
             position: relative !important;
-            background: none !important;
-            border: none !important;
         }
-        
-        .gumroad-button:hover {
-            background: none !important;
-            border: none !important;
-            box-shadow: none !important;
+
+        a[href*="gumroad.com"]:hover {
+            text-decoration: none !important;
         }
-        
-        /* Hide any gumroad text overlays */
-        .gumroad-button [class*="overlay"],
-        .gumroad-button [class*="text"],
-        .gumroad-button .gumroad-overlay {
-            display: none !important;
-        }
-        
-        /* More aggressive Gumroad removal */
-        .gumroad-button > * {
-            position: relative !important;
-            z-index: 10 !important;
-        }
-        
-        /* Block all Gumroad overlays */
-        .gumroad-button::after {
-            content: none !important;
-            display: none !important;
-        }
-        
-        .gumroad-button:before {
-            content: none !important;
-            display: none !important;
-        }
-        
-        /* Override any Gumroad styling */
-        a[class*="gumroad"]::after,
-        a[class*="gumroad"]:hover::after,
-        .gumroad-button span,
-        .gumroad-button div {
+
+        /* Block any dynamic content injection */
+        a[href*="gumroad.com"] > *:not(img) {
             display: none !important;
         }
         
@@ -758,11 +724,18 @@
                         <p class="text-lg sm:text-xl font-bold text-body-dark">Get your complete app blueprint and escape the $5,000 developer trap and investor gatekeepers forever - click button below.</p>
                     </div>
                     
-                    <!-- Gumroad Buy Button -->
+                    <!-- FIXED Gumroad Buy Button -->
                     <div class="flex justify-center pt-4">
-                        <script src="https://gumroad.com/js/gumroad.js"></script>
-                        <a class="gumroad-button border-0" href="https://vitality63.gumroad.com/l/ixmmge?wanted=true" target="_blank" data-gumroad-single-product="true" style="border: none; background: none; padding: 0; display: block;">onclick="window.open(this.href, '_blank'); return false;"
-                            <img src="./images/turn_my_idea.png" alt="Turn My Idea Into Gold" class="h-12 sm:h-14 md:h-16 w-auto cursor-pointer gold-button" style="border: none; background: none; display: block;">
+                        <a href="https://vitality63.gumroad.com/l/ixmmge?wanted=true" 
+                           target="_blank" 
+                           class="block"
+                           style="border: none; background: none; padding: 0; text-decoration: none;"
+                           onmouseover="this.style.textDecoration='none'"
+                           onclick="window.open(this.href, '_blank'); return false;">
+                            <img src="./images/turn_my_idea.png" 
+                                 alt="Turn My Idea Into Gold" 
+                                 class="h-12 sm:h-14 md:h-16 w-auto cursor-pointer gold-button" 
+                                 style="border: none; background: none; display: block;">
                         </a>
                     </div>
                     
@@ -1235,350 +1208,4 @@ When You Reach About 20 Messages (or 4 for free users):
    - Attach the document "Claude 01"
    - Send the message
 
-4. Continue Building - Update document names each time: Claude 02, Claude 03, etc. These documents serve as a library of your project progress.
-
-EMERGENCY BACKUP (If You Forgot to Create Blueprint):
-
-If you reached the limit and didn't create your document, don't panic:
-
-1. Select All Chat Content:
-   - Place cursor anywhere in the chat
-   - Press Ctrl+A (Select All)
-   - Press Ctrl+C (Copy)
-
-2. Save the Conversation:
-   - Open new document
-   - Press Ctrl+V (Paste)
-   - Name the file: "Chat with Claude 01" (or 02, 03, etc.)
-   - Save it to your project folder
-
-3. Start New Chat:
-   - Start fresh conversation
-   - Click + sign
-   - Paste prompt: "Hello Claude you are tutoring me in my app development, read file attached and help me to go on with my project. Thanks"
-   - Attach the "Chat with Claude 01" document
-
-This information is included in your guide so you can reference these steps if you forget the instructions. This system allows you to continue your project fluently across unlimited conversations.
-
-IMPORTANT: Claude.ai Message Limits
-- Free Claude: ~5 messages before waiting
-- Pro Claude: ~25 messages ($20/month) - HIGHLY RECOMMENDED
-- Solution: Get Claude Pro OR use the strategies below
-
-Option 1: Get Claude Pro ($20/month)
-1. Visit claude.ai and upgrade to Pro
-2. This gives you ~25 messages before limits
-3. Much better for ongoing business discussions
-
-Option 2: Free Claude Strategy
-1. Start with 3-5 focused questions from this guide
-2. When you hit limits, wait for reset (usually 3-8 hours)
-3. Continue with next batch of questions
-4. Bookmark this guide to return to it
-
-Option 3: Alternative AI Tools
-- ChatGPT Plus: $20/month, different limits
-- Perplexity Pro: $20/month, good for research
-- Claude.ai + Others: Switch between platforms
-
-About Claude.ai:
-Claude.ai is your best AI mentor, but it has usage limits. Think of it like having scheduled meetings with an expert consultant - you prepare your questions, have focused sessions, then implement between meetings.
-
-STRATEGIES FOR SUCCESS WITH LIMITS:
-
-1. Batch Your Questions: Prepare 3-5 specific questions before each Claude session
-2. Take Notes: Save Claude's responses to review offline  
-3. Focus Sessions: Use each conversation for one specific topic
-4. Implementation Time: Work on Claude's suggestions between sessions
-5. Progress Updates: When you return, update Claude on your progress
-
-MAXIMIZING FREE CLAUDE:
-- Be specific: Ask detailed, focused questions
-- Provide context: Reference this guide in each new conversation  
-- Save responses: Copy important answers to notes
-- Plan ahead: Know your next 3 questions before starting
-
-YOUR PROJECT OVERVIEW
-Date: ${new Date().toLocaleDateString()}
-Client: ${userName}
-Project Name: [Generate name from idea]
-Description: ${fullProjectDescription}
-
-BUDGET PLANNING & DEVELOPMENT OPTIONS
-Ultra Low Budget ($0-$50/month): Bubble.io free tier, Glide, AppSheet. Perfect for validation.
-Low Budget ($50-$200/month): Bubble.io Pro, Webflow, Adalo Pro. Custom domains, more features.
-Medium Budget ($200-$500/month): Bubble.io Professional, integrations, marketing tools.
-Higher Budget ($500+/month): Enterprise solutions, custom development, professional design.
-
-YOUR 6-STEP SUCCESS ROADMAP
-Stage 1: Market Research - Define audience, analyze competitors, validate demand
-Stage 2: Platform Selection - Compare no-code platforms, set up, plan structure  
-Stage 3: Build MVP - Prioritize features, develop, implement analytics
-Stage 4: Test & Refine - User testing, feedback analysis, optimize
-Stage 5: Launch & Market - Marketing strategy, app store, social media
-Stage 6: Scale & Optimize - Growth metrics, advanced features, partnerships
-
-COMMON PITFALLS TO AVOID
-1. Feature Creep: Start simple, add based on feedback
-2. Perfectionism: Launch MVP, improve with real data
-3. Ignoring Feedback: Listen to actual user needs
-4. Underestimating Marketing: Plan acquisition from day one
-5. Pricing Too Low: Value your work appropriately
-
-SUCCESS TIMELINE (WORK AT YOUR PACE)
-Stage 1: Market research and validation
-Stage 2: Platform selection and setup  
-Stage 3: MVP development and testing
-Stage 4: Refinement based on feedback
-Stage 5: Launch preparation and marketing
-Stage 6: Launch, marketing, and optimization
-
-NEXT STEPS FOR SUCCESS
-Sample Questions for Claude:
-- "Which no-code platform is best for my app idea?"
-- "How do I validate my idea before building?"
-- "What marketing strategies work for apps like mine?"
-- "How do I optimize my app store listing?"
-
-RESOURCES & TOOLS
-Free: Figma, Bubble.io, Google Analytics, Canva, Unsplash
-Paid Worth Investment: Claude.ai Pro ($20/month), Bubble.io Pro ($29/month), ConvertKit, Hotjar
-Learning: Bubble.io Academy, YouTube tutorials, no-code forums, Product Hunt
-Communities: No-code makers, Bubble.io forum, Indie Hackers, Product Hunt
-
-POST-LAUNCH STRATEGY
-1 Focus on user acquisition and feedback collection through targeted marketing
-2 Implement user-requested features based on data analysis  
-3 Scale marketing efforts and plan advanced features for version 2.0
-4 Expand to new markets or create complementary products
-
----
-
-IMPORTANT: This guide works seamlessly with Claude.ai. Simply open Claude, paste the message above, attach this guide, and start your journey. Claude provides personalized guidance every step.
-
-Remember: Success comes from taking action. Start with Stage 1 today and turn your vision into reality!
-
-© 2025 app2.gold All Rights Reserved.    contact@app2.gold`;
-
-                    setTimeout(async () => {
-                        const finalGuide = await callOpenAIAPI(guidePrompt);
-                        const formattedGuide = formatGuideContent(finalGuide);
-                        const guideDisplay = document.getElementById('final-guide-display');
-                        if (guideDisplay) {
-                            guideDisplay.value = formattedGuide;
-                        }
-                        hideLoading();
-                        showPage5();
-                    }, 300000);
-                });
-            }
-            
-            // Copy guide button
-            const copyBtn = document.getElementById('copy-final-guide');
-            if (copyBtn) {
-                copyBtn.addEventListener('click', () => {
-                    const guideDisplay = document.getElementById('final-guide-display');
-                    if (guideDisplay) {
-                        guideDisplay.select();
-                        document.execCommand('copy');
-                        
-                        copyBtn.textContent = '✓ COPIED';
-                        copyBtn.style.backgroundColor = '#28a745';
-                        copyBtn.disabled = true;
-                        
-                        const finalDiv = document.getElementById('session-complete-final');
-                        if (finalDiv) {
-                            finalDiv.classList.remove('hidden');
-                        }
-                    }
-                });
-            }
-        }
-        
-        // Page navigation
-        function hideAllPages() {
-            ['agent-page-2', 'agent-page-3', 'agent-page-4', 'agent-page-5'].forEach(id => {
-                const page = document.getElementById(id);
-                if (page) page.classList.add('hidden');
-            });
-        }
-        
-        function showPage3() {
-            // Hide the welcome banner when moving to page 3
-            const banner = document.getElementById('success-banner');
-            if (banner) {
-                banner.style.display = 'none';
-                banner.classList.add('hidden');
-            }
-            
-            hideAllPages();
-            const page3 = document.getElementById('agent-page-3');
-            if (page3) {
-                page3.classList.remove('hidden');
-            }
-            console.log('📄 Moving to page 3 - Banner hidden');
-        }
-        
-        function showPage4() {
-            hideAllPages();
-            const page4 = document.getElementById('agent-page-4');
-            if (page4) {
-                page4.classList.remove('hidden');
-            }
-        }
-        
-        function showPage5() {
-            hideAllPages();
-            const page5 = document.getElementById('agent-page-5');
-            if (page5) {
-                page5.classList.remove('hidden');
-            }
-        }
-        
-        // Loading functions with step-by-step progress
-        function showLoading(type) {
-            hideAllPages();
-            const loading = document.getElementById('loading-indicator');
-            if (loading) {
-                loading.classList.remove('hidden');
-                
-                const progressText = document.getElementById('progress-text');
-                if (progressText) {
-                    if (type === 'blueprint') {
-                        progressText.textContent = 'AI Agent is analyzing your idea...';
-                        // Show 5 steps over 1 minute (12 seconds each)
-                        updateProgressSteps([
-                            'Processing your unique idea and experience...',
-                            'Analyzing market opportunities for your concept...',
-                            'Creating your personalized project blueprint...',
-                            'Building your strategic foundation...',
-                            'Finalizing your complete Guide blueprint...'
-                        ], 60);
-                    } else if (type === 'guide') {
-                        progressText.textContent = 'AI Agent is crafting your comprehensive guide, please be patient this will take about 5 minutes......';
-                        // Show 5 steps over 5 minutes (60 seconds each)
-                        updateProgressSteps([
-                            'Conducting market research analysis...',
-                            'Developing your monetization strategy...',
-                            'Creating your step-by-step roadmap...',
-                            'Optimizing your business blueprint...',
-                            'Finalizing your complete Guide blueprint...'
-                        ], 300);
-                    }
-                }
-            }
-            console.log('⏳ Loading with steps started:', type);
-        }
-        
-        function hideLoading() {
-            const loading = document.getElementById('loading-indicator');
-            if (loading) {
-                loading.classList.add('hidden');
-            }
-        }
-        
-        // FIXED: Progress steps display function
-        function updateProgressSteps(steps, totalSeconds) {
-            const progressSteps = document.getElementById('progress-steps');
-            if (!progressSteps) {
-                console.log('❌ Progress steps element not found');
-                return;
-            }
-            
-            let currentStep = 0;
-            const stepInterval = (totalSeconds * 1000) / steps.length; // Convert to milliseconds
-            
-            console.log(`📊 Starting progress: ${steps.length} steps over ${totalSeconds} seconds`);
-            
-            function showNextStep() {
-                if (currentStep < steps.length) {
-                    // Clear previous steps
-                    progressSteps.innerHTML = '';
-                    
-                    // Show all steps up to current one
-                    for (let i = 0; i <= currentStep; i++) {
-                        const stepDiv = document.createElement('div');
-                        stepDiv.className = 'progress-item';
-                        stepDiv.innerHTML = `
-                            <span class="progress-check">✓</span>
-                            <span>${steps[i]}</span>
-                        `;
-                        progressSteps.appendChild(stepDiv);
-                    }
-                    
-                    console.log(`✅ Step ${currentStep + 1}/${steps.length}: ${steps[currentStep]}`);
-                    currentStep++;
-                    
-                    // Schedule next step
-                    if (currentStep < steps.length) {
-                        setTimeout(showNextStep, stepInterval);
-                    }
-                }
-            }
-            
-            // Start immediately with first step
-            showNextStep();
-        }
-        
-        // API call
-        async function callOpenAIAPI(prompt) {
-            try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        prompt: prompt,
-                        accessCode: 'app2gold-purchased-2025'
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.statusText}`);
-                }
-                
-                const result = await response.json();
-                
-                if (result.choices && result.choices.length > 0 && result.choices[0].message) {
-                    return result.choices[0].message.content;
-                } else {
-                    return "Sorry, I couldn't generate a response. Please try again.";
-                }
-                
-            } catch (error) {
-                console.error("API call failed:", error);
-                return "An error occurred while connecting to the AI. Please check your internet connection and try again.";
-            }
-        }
-        
-        // Format guide content - NO EMOJIS
-        function formatGuideContent(content) {
-            // Remove markdown symbols only
-            let formatted = content.replace(/#+\s?/g, '');
-            formatted = formatted.replace(/\*\*/g, '');
-            formatted = formatted.replace(/\*/g, '');
-            
-            // NO emoji additions - keep content clean
-            return formatted;
-        }
-        
-        // START THE APP - Multiple attempts to ensure it works
-        function startApp() {
-            console.log('🎬 STARTING APP...');
-            initApp();
-        }
-        
-        // Try multiple initialization methods
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', startApp);
-        } else {
-            startApp();
-        }
-        
-        // Backup initialization
-        setTimeout(startApp, 500);
-        setTimeout(startApp, 1000);
-    </script>
-</body>
-</html>
+4. Continue Building - Update document names each time: Claude
